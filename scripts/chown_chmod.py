@@ -25,3 +25,7 @@ for p in base_path.rglob('*'):
             p.chmod(TARGET_MODE_FILE)
     if p.owner() != TARGET_USER or p.group() != TARGET_GROUP:
         shutil.chown(str(p), TARGET_USER, TARGET_GROUP)
+
+
+# Then have the following line in `sudo crontab -e`
+# */5 * * * * chown_chmod.py
