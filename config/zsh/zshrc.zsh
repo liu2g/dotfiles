@@ -13,15 +13,15 @@ setopt appendhistory
 
 
 # Global config location
-export CONFIG_PATH="/home/liu/.config/zsh"
+CONFIG_PATH="/home/liu/.config/zsh"
 
 # Autodetect the emulator
 export EMULATOR=$(ps -o comm= -p "$(($(ps -o ppid= -p "$(($(ps -o sid= -p "$$")))")))")
 
-if [[ "${EMULATOR}" = "yakuake" ]]
+if [[ "${EMULATOR}" = "yakuake" ]] || [[ "${EMULATOR}" = "tilda" ]]
 then
     # Created by newuser for 5.7.1
-    source ~/bin/powerlevel10k/powerlevel10k.zsh-theme
+    source "$CONFIG_PATH/themes/powerlevel10k/powerlevel10k.zsh-theme"
 
     # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
     [[ ! -f "$CONFIG_PATH/themes/p10k.zsh" ]] || source "$CONFIG_PATH/themes/p10k.zsh"
@@ -36,10 +36,10 @@ __conda_setup="$('/home/liu/bin/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/liu/bin/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/liu/bin/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "$HOME/.local/bin/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "$HOME/.local/bin/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/liu/bin/miniconda3/bin:$PATH"
+        export PATH="$HOME/.local/bin/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -62,7 +62,7 @@ for file in $CONFIG_PATH/aliases/*(.); source $file
 # complete -o nospace -C /usr/local/bin/bit bit
 source "$CONFIG_PATH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$CONFIG_PATH/plugins/zsh-async/async.zsh"
-source /usr/share/autojump/autojump.zsh
+[[ -s /home/liu/.autojump/etc/profile.d/autojump.sh ]] && source /home/liu/.autojump/etc/profile.d/autojump.sh
 source "$CONFIG_PATH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$CONFIG_PATH/plugins/zsh-sudo/sudo.plugin.zsh"
 fpath=($CONFIG_PATH/plugins/zsh-cht/ $fpath)
