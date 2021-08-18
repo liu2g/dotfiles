@@ -44,7 +44,8 @@ else
 fi
 unset __conda_setup
 
-export PYTHONPYCACHEPREFIX="$HOME/.cache/pycache/"  #Python3.8 configurable bytecode path, see https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPYCACHEPREFIX
+export PYTHONPYCACHEPREFIX="$HOME/.cache/pycache/"
+#Python3.8 configurable bytecode path, see https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPYCACHEPREFIX
 
 # <<< conda initialize <<<
 
