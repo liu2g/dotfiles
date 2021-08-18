@@ -3,7 +3,7 @@
 # email: engineerarun@gmail.com
 #
 
-export BROWSER=w3m
+export BROWSER=firefox
 
 # Amazon.com
   alias @a='googler -w amazon.com'
