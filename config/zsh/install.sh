@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 BASE_DIR=$(realpath $(dirname "$0"))
 CONFIG_DIR=$HOME/.config
