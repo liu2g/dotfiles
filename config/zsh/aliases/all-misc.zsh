@@ -1,7 +1,7 @@
 # Various alias for different kinds of stuff
 
 alias ls='exa --group-directories-first' # colored ls
-alias erc='subl ~/.config/zsh/'
+alias erc='xdg-open ~/.config/zsh/'
 alias src='source ~/.zshrc'
 alias logserver='ssh 192.168.0.137'
 alias down2='/bin/ls -datr /home/liu/Downloads/** | tail -n 1 | xargs -I\{\} mv \{\}'
