@@ -69,3 +69,4 @@ source "$CONFIG_PATH/plugins/zsh-sudo/sudo.plugin.zsh"
 fpath=($CONFIG_PATH/plugins/zsh-cht/ $fpath)
 
 bindkey '^z' push-line-or-edit
+bindkey -v
