@@ -1,0 +1,5 @@
+{
+    "config_path": ".config/",
+    "bin_path": ".local/bin/",
+    "src_path": ".local/src/"
+}
