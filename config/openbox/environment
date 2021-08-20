@@ -1,0 +1,2 @@
+export MOZ_GTK_TITLEBAR_DECORATION=client
+

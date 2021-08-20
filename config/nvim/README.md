@@ -1,0 +1,15 @@
+My personal Neovim setup, featuring
+- Autocomplete by deoplete
+- Airline with murmur theme
+- Autopair quotes, brackets, etc by vim-surround
+- Indent guideline with vim-inden-guides
+- Comment helper with nerdcommenter
+- Autoformatter with neoformat
+- Oceanic-material colorscheme
+- Better clipboard buffer with multiple slots and delete not filling the buffer (to cut is to "<m>ove", done by vim-yoink and vim-cutlass
+- Integraded termial with neoterm
+- Git integration with vim-fugitive
+- Display git diff with vim-signify
+- Easier git workflow with vimagit
+- File navigator with nerdtree
+- Markdown integartion with vim-markdown and markdown-preview
