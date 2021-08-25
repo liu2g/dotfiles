@@ -97,6 +97,7 @@ endfunction
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * call StartUp()
 nnoremap <C-_> :NERDTreeToggle<CR>
+let g:NERDTreeChDirMode = 2
 
 " Hybrid line number
 :set number
