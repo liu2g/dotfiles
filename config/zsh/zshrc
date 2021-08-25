@@ -15,6 +15,11 @@ setopt appendhistory
 # Global config location
 CONFIG_PATH="/home/liu/.config/zsh"
 
+DISABLE_AUTO_TITLE=”true”
+function precmd () {
+    print -Pn - '\e]0;%~\a'
+}
+
 # Autodetect the emulator
 export EMULATOR=$(ps -o comm= -p "$(($(ps -o ppid= -p "$(($(ps -o sid= -p "$$")))")))")
 
