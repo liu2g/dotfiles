@@ -3,10 +3,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Plug 'foo/bar', { 'on': [] } " Disable template
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'} " Auto-complete
 Plug 'vim-airline/vim-airline' " Bottom statusbar
-Plug 'davidhalter/jedi-vim', " LSP framework
+Plug 'davidhalter/jedi-vim' " LSP framework
 Plug 'zchee/deoplete-jedi' " Python LSP
 Plug 'tpope/vim-surround' " Auto complete quotes, brackets, etc
-Plug 'nathanaelkane/vim-indent-guides' " Indent helper
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/nerdcommenter' " Comment helper 
 Plug 'sbdchd/neoformat' " Auto formatter
 Plug 'scrooloose/nerdtree' " File tree
@@ -142,4 +142,9 @@ function! g:BuffetSetCustomColors()
   hi! BuffetActiveBuffer ctermbg=235 ctermfg=193
   hi! BuffetTab ctermbg=235 ctermfg=193
 endfunction
+
+
+
+let g:languagetool_jar='$HOME/.local/bin/LanguageTool/languagetool-commandline.jar'
+let g:languagetool_win_height=8
 
