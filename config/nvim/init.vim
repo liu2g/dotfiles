@@ -40,25 +40,29 @@ set softtabstop =4
 set shiftwidth  =4
 set expandtab
 
-:set colorcolumn=80
 
 " Set airline theme
 let g:airline_theme='murmur' 
 
 " Set editor theme
-set background=dark
 colorscheme oceanic_material
+set background=dark
 
 " Deoplete setup
 let g:deoplete#enable_at_startup = 1
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif " close autocomplete preview
-set splitbelow " autocomplete at bottom
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+autocmd FileType tex  call deoplete#custom#buffer_option('auto_complete', v:false)
+autocmd FileType markdown call deoplete#custom#buffer_option('auto_complete', v:false)
 
-" Indent Guide color
 let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_guide_size = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=236
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=238
+let g:indent_guides_guide_size = 1 
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Open nerdtree if use dir or empty in arg
 function! StartUp()
     if !argc() && !exists("s:std_in")
