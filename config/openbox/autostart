@@ -1,6 +1,4 @@
-pkill -f "kited"
 tint2 &
-compton &
 nitrogen --restore &
 volumeicon &
 
