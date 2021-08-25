@@ -24,15 +24,35 @@ Plug 'bagrat/vim-buffet' " Gives tabs
 Plug 'lifepillar/vim-cheat40'
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'dpelle/vim-LanguageTool'
 
 
 call plug#end()
 
+syntax on
+
+nnoremap ; :
+nnoremap : ;
+
+set wrap linebreak nolist
+
+:set colorcolumn=79
+
+nnoremap j gj
+nnoremap k gk
+
 "Case incensitive search
-set ignorecase
+set ignorecase smartcase
+
+set incsearch hlsearch
+
+let g:python_host_prog  = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
+
+nnoremap <Space><Space> <C-w>w 
 
 "Show 10 lines around cursor
-set scrolloff=5
+set scrolloff=10
 
 "Set tab config
 set tabstop     =4
