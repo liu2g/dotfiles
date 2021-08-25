@@ -1,4 +1,5 @@
-call plug#begin('~/.local/share/nvim/plugged')
+" ----- Imported Plugins ----- "
+call plug#begin('$HOME/.local/share/nvim/plugged')
 
 " Plug 'foo/bar', { 'on': [] } " Disable template
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'} " Auto-complete
@@ -24,43 +25,56 @@ Plug 'bagrat/vim-buffet' " Gives tabs
 Plug 'lifepillar/vim-cheat40'
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'tmhedberg/simpylfold'
 Plug 'dpelle/vim-LanguageTool'
-
 
 call plug#end()
 
+" ----- Global settings ----- "
 syntax on
-
+" This saves one more key stroke
 nnoremap ; :
 nnoremap : ;
-
+" Disallow word breaking on softwrap
 set wrap linebreak nolist
-
+" 80 char limit line
 :set colorcolumn=79
-
+" Movement scale with display
 nnoremap j gj
 nnoremap k gk
-
-"Case incensitive search
+" Case incensitive search
 set ignorecase smartcase
-
-set incsearch hlsearch
-
+" Offer hard link to python because it works badly with conda
 let g:python_host_prog  = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
-
+" Quickly switch buffers
 nnoremap <Space><Space> <C-w>w 
-
 "Show 10 lines around cursor
 set scrolloff=10
-
 "Set tab config
-set tabstop     =4
-set softtabstop =4
-set shiftwidth  =4
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set expandtab
 
+" Hybrid line number
+:set number
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+:  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+:augroup END
 
+" Faster scrolling
+set ttyfast
+
+" Use system clipboard
+set clipboard+=unnamedplus
+
+" Use Esc to remove search highlight
+noremap <silent><esc> <esc>:noh<CR><esc>
+
+" ----- Appearance ----- "
 " Set airline theme
 let g:airline_theme='murmur' 
 
@@ -68,13 +82,15 @@ let g:airline_theme='murmur'
 colorscheme oceanic_material
 set background=dark
 
-" Deoplete setup
+" ----- Plugin Settings ----- "
+" Deoplete
 let g:deoplete#enable_at_startup = 1
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif " close autocomplete preview
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 autocmd FileType tex  call deoplete#custom#buffer_option('auto_complete', v:false)
 autocmd FileType markdown call deoplete#custom#buffer_option('auto_complete', v:false)
 
+" IndentGuides
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=236
@@ -82,6 +98,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=238
 let g:indent_guides_guide_size = 1 
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
+" NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Open nerdtree if use dir or empty in arg
 function! StartUp()
@@ -99,21 +116,8 @@ autocmd VimEnter * call StartUp()
 nnoremap <C-_> :NERDTreeToggle<CR>
 let g:NERDTreeChDirMode = 2
 
-" Hybrid line number
-:set number
-:augroup numbertoggle
-:  autocmd!
-:  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
-:  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
-:augroup END
 
-" Faster scrolling
-set ttyfast
-
-" Use system clipboard
-set clipboard+=unnamedplus
-
-" Change paste keybind for Yoink
+" Yoink
 nmap <c-n> <plug>(YoinkPostPasteSwapBack)
 nmap <c-p> <plug>(YoinkPostPasteSwapForward)
 nmap p <plug>(YoinkPaste_p)
@@ -122,18 +126,18 @@ nmap gp <plug>(YoinkPaste_gp)
 nmap gP <plug>(YoinkPaste_gP)
 let g:yoinkIncludeDeleteOperations=1
 
-" Change cut keybind for Cutlass
+" Cutlass
 nnoremap m d
 xnoremap m d
 nnoremap mm dd
 nnoremap M D
 
-" Configure vim-buffet
-noremap <Tab> :bn<CR>
-noremap <S-Tab> :bp<CR>
-noremap <Leader><Tab> :Bw<CR>
-noremap <Leader><S-Tab> :Bw!<CR>
-noremap <C-t> :tabnew split<CR>
+" Vim-buffet
+noremap <Tab><Tab> :bn<CR>
+noremap <S-Tab><Tab> :bp<CR>
+noremap <Tab>q :Bw<CR>
+noremap <Leader><Tab>q :Bw!<CR>
+noremap <Tab>t :tabnew<CR>
 let g:buffet_tab_icon = "\uf00a"
 let g:buffet_left_trunc_icon = "\uf0a8"
 let g:buffet_right_trunc_icon = "\uf0a9"
@@ -143,8 +147,28 @@ function! g:BuffetSetCustomColors()
   hi! BuffetTab ctermbg=235 ctermfg=193
 endfunction
 
-
-
+" LanguageTool
 let g:languagetool_jar='$HOME/.local/bin/LanguageTool/languagetool-commandline.jar'
 let g:languagetool_win_height=8
 
+" VimMarkdown
+let g:vim_markdown_auto_insert_bullets = 0
+let g:vim_markdown_new_list_item_indent = 0
+
+" ----- Custom Command ----- "
+fun! Mksession(...)
+    if a:0 > 0
+        let name = a:1
+    else
+        let name = "session.vim"
+    endif
+    let need_tree = g:NERDTree.IsOpen()
+    NERDTreeClose
+    execute "mksession!" . name
+    if need_tree
+        call writefile(readfile(name)+['NERDTree'], name)
+        NERDTree
+    endif
+endfun
+
+command! -nargs=* SS call Mksession(<f-args>)
