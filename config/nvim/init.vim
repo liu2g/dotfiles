@@ -160,7 +160,7 @@ fun! Mksession(...)
     if a:0 > 0
         let name = a:1
     else
-        let name = "session.vim"
+        let name = "Session.vim"
     endif
     let need_tree = g:NERDTree.IsOpen()
     NERDTreeClose

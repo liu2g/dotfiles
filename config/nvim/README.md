@@ -17,7 +17,7 @@ mv $HOME/.local/bin/LanguageTool-* $HOME/.local/bin/bin/LanguageTool
 ```
 
 ## Usage
-After resolving for dependencies, run Neovim (some error may pop up, ignore them) and use `:PlugInstall` to install all plugins.
+After resolving for dependencies, install with `install.py`, then run Neovim (some error may pop up, ignore them) and use `:PlugInstall` to install all plugins.
 Beware that certain behavior of this setup differ from default Vim settings, listed below
 
 - NERDTree
@@ -41,9 +41,9 @@ Beware that certain behavior of this setup differ from default Vim settings, lis
     - `:LanguageToolCheck` to check current buffer, `:LanguageToolClear`to stop
     - `:lopen` to open the location list window, `:lne` to jump to the next error, etc
 - Save session (custom command, compatible to NERDTree)
-    - `:SS` to save session at CWD
+    - `:SS` to save session at CWD as `Session.vim`
     - `:SS <file.vim>` to save session to other path
-    - `:source session.vim` or `vim -S session.vim` to restore session
+    - `:source Session.vim` or `vim -S session.vim` to restore session
 - Git integration
     - `:Magit` to use prompted git diff, stage, commit tool
     - `<Ctrl-n>`/`<Ctrl-p>` to navigate hunks
