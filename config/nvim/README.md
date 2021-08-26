@@ -3,6 +3,8 @@ My personal Neovim setup, featuring
 - [Oceanic-material](https://github.com/glepnir/oceanic-material) colorscheme
 - Many plugins, integrations and convenient changes
 
+![](screenshot.png)
+
 ## Dependencies
 - [Neovim](https://github.com/neovim/neovim), vanilla Vim should also work but not tested.
 - [vim-plug](https://github.com/junegunn/vim-plug)
@@ -18,7 +20,7 @@ mv $HOME/.local/bin/LanguageTool-* $HOME/.local/bin/bin/LanguageTool
 
 ## Usage
 After resolving for dependencies, install with `install.py`, then run Neovim (some error may pop up, ignore them) and use `:PlugInstall` to install all plugins.
-Beware that certain behavior of this setup differ from default Vim settings, listed below
+Beware that there are a lot of new and different settings from default Vim settings, listed below
 
 - NERDTree
     - When the argument passed to `vim` is a directory, NERDTree auto shows up and change the CWD to it
@@ -27,7 +29,7 @@ Beware that certain behavior of this setup differ from default Vim settings, lis
 - Clipboard / Register
     - Register works with system clipboard
     - `<d>elete` commands no longer push into register
-    - Instead, to "cut", use `<m>ove`
+    - Instead, to "cut", use `<m>ove` which supports motion too
 - Use tabbed layout for buffers
     - `<Tab><Tab>` to go to next tab
     - `<Shift-Tab><Tab>` to go to previous tab
