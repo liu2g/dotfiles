@@ -13,3 +13,10 @@ linked_config_path.unlink(missing_ok=True)
 
 linked_config_path.symlink_to(real_config_path,
         target_is_directory=True)
+
+linked_themes_path = Path.home() / ".themes"
+real_themes_path = file_path.parents[0] / "themes"
+
+linked_themes_path.unlink(missing_ok=True)
+
+linked_themes_path.symlink_to(real_themes_path, target_is_directory=True)

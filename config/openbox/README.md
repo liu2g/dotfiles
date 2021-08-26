@@ -1,8 +1,33 @@
-[Openbox](http://openbox.org/wiki/Main_Page) works well with 
-- [obconf](http://openbox.org/wiki/ObConf:About): Openbox GUI configurator
-- [LXAppearance](https://wiki.lxde.org/en/LXAppearance): GTK theme configurator, config depends on the themes installed. Use `lxappearance` to launch GUI.
-- [tint2](https://gitlab.com/o9000/tint2): Minimalist panel, configured in its separate directory.
-- [jgmenu](https://github.com/johanmalm/jgmenu): Menu-like App launcher, config depends on OS menu. Use `jgmenu_run init -i` to select a good layout.
-- [nitrogen](https://github.com/l3ib/nitrogen): Wallpaper configurator, config depends on image choice. Use `nitrogen` to first set a wallpaper then it keeps the same one every login.
-- [volumeicon](https://github.com/Maato/volumeicon): or `volumeicon-alsa`, volumeicon that works with alsa at panel tray
+My personal openbox setup
+
+![](screenshot.png)
+
+## Dependencies
+Core
+- [Openbox](http://openbox.org/wiki/Main_Page)(duh)
+
+Configurator
+- [obconf](http://openbox.org/wiki/ObConf:About) openbox GUI configurator
+- [LXAppearance](https://wiki.lxde.org/en/LXAppearance) GTK theme configurator
+
+Menus and panels
+- [tint2](https://gitlab.com/o9000/tint2) panel program
+- [jgmenu](https://github.com/johanmalm/jgmenu) menu-like app launcher
+- [menumaker](http://menumaker.sourceforge.net/) generate
+
+Misc
+- [nitrogen](https://github.com/l3ib/nitrogen) wallpaper configurator
+- [volumeicon](https://github.com/Maato/volumeicon) or `volumeicon-alsa` in Debian apt sources, this is a volumeicon that works with alsa at panel tray
+- [keepassxc](https://keepassxc.org/) password manager
+- [blueman](https://github.com/blueman-project/blueman) bluetooth manager
+- [flameshot](https://github.com/flameshot-org/flameshot) screenshot daemon
+
+## Usage
+0. Resolve for dependencies
+1. Install with `install.py`
+2. `nitrogen`, `obconf` and `lxappearance` to configure appearance
+3. `mmaker openbox -f -t kitty` to generate menu
+4. Install config for tint2
+5. Configure jgmenu with `jgmenu_run init -i`
+5. Lastly, install the power menu script in `scripts/tintlogout`
 

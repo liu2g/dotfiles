@@ -1,4 +1,6 @@
 tint2 &
 nitrogen --restore &
 volumeicon &
-
+blueman-applet &
+keepassxc &
+flameshot &
