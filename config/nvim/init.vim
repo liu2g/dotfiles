@@ -27,11 +27,13 @@ Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'tmhedberg/simpylfold'
 Plug 'dpelle/vim-LanguageTool'
+Plug 'sbdchd/neoformat'
 
 call plug#end()
 
 " ----- Global settings ----- "
 syntax on
+set timeoutlen=2000
 " This saves one more key stroke
 nnoremap ; :
 nnoremap : ;
@@ -134,7 +136,7 @@ nnoremap M D
 
 " Vim-buffet
 noremap <Tab><Tab> :bn<CR>
-noremap <S-Tab><Tab> :bp<CR>
+noremap <S-Tab><S-Tab> :bp<CR>
 noremap <Tab>q :Bw<CR>
 noremap <Leader><Tab>q :Bw!<CR>
 noremap <Tab>t :tabnew<CR>
@@ -170,5 +172,6 @@ fun! Mksession(...)
         NERDTree
     endif
 endfun
-
 command! -nargs=* SS call Mksession(<f-args>)
+
+com! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
