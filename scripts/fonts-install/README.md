@@ -1,13 +1,3 @@
-```
- File              : README.md
- Date              : 27.08.2021
- Last Modified Date: 27.08.2021
-```
-```
- File              : README.md
- Date              : 27.08.2021
- Last Modified Date: 27.08.2021
-```
 `./install.sh` to install fonts for user
 
 To check installation, try

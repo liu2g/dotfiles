@@ -4,6 +4,18 @@
 " File              : init.vim
 " Date              : 27.08.2021
 " Last Modified Date: 27.08.2021
+" File              : init.vim
+" Date              : 27.08.2021
+" Last Modified Date: 27.08.2021
+" File              : init.vim
+" Date              : 27.08.2021
+" Last Modified Date: 27.08.2021
+" File              : init.vim
+" Date              : 27.08.2021
+" Last Modified Date: 27.08.2021
+" File              : init.vim
+" Date              : 27.08.2021
+" Last Modified Date: 27.08.2021
 " ----- Imported Plugins ----- "
 call plug#begin('$HOME/.local/share/nvim/plugged')
 
@@ -34,7 +46,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'tmhedberg/simpylfold'
 Plug 'dpelle/vim-LanguageTool'
 Plug 'sbdchd/neoformat'
-Plug 'alpertuna/vim-header'
 
 call plug#end()
 
