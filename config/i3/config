@@ -89,9 +89,9 @@ exec_always --no-startup-id $HOME/.config/screenlayout/default.sh
 
 exec --no-startup-id fcitx -r
 
-exec_always xautolock -detectsleep -time 15 -locker  "i3lock-fancy -p -f Ubuntu Mono  -- scrot -z"\
-  -notify 30 \
-  -notifier "notify-send -u critical -t 10000 -- 'locking screen in 30 seconds'"
+#exec_always xautolock -detectsleep -time 15 -locker  "i3lock-fancy -p -f Ubuntu Mono  -- scrot -z"\
+  #-notify 30 \
+  #-notifier "notify-send -u critical -t 10000 -- 'locking screen in 30 seconds'"
 
 ### --- Window config --- ###
 # kill focused window
