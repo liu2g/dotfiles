@@ -2,7 +2,7 @@ My personal openbox setup
 
 ![](screenshot.png)
 
-## Dependencies
+## Related Packages/Programs
 Core
 - [Openbox](http://openbox.org/wiki/Main_Page)(duh)
 
