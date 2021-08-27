@@ -5,6 +5,23 @@
  * Github  : @adi1090x
  * Twitter : @adi1090x
  *
+ * Copyright (C) 2020 Aditya Shakya
+ *
+ * This program is free software: you can redistribute it and/or modify  
+ * it under the terms of the GNU General Public License as published by  
+ * the Free Software Foundation, version 3.
+ *
+ * This program is distributed in the hope that it will be useful, but 
+ * WITHOUT ANY WARRANTY; without even the implied warranty of 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License 
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Since this is the only file under GPLv3 licenses in this directory,
+ * license file is not included here but instead remotely at
+ * <https://github.com/adi1090x/rofi/blob/master/LICENSE>.
  */
 
 configuration {
