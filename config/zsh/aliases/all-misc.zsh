@@ -30,6 +30,3 @@ closeto() {
 	return 0
 }
 
-alias googler='googler -n 5'
-
-alias opt='/home/liu/bin/miniconda3/envs/uscis-case-poll/bin/python /home/liu/bin/USCISCasePoll/poll_uscis.py -c YSC2190153284'
