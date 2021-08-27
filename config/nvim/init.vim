@@ -1,3 +1,9 @@
+" File              : init.vim
+" Date              : 27.08.2021
+" Last Modified Date: 27.08.2021
+" File              : init.vim
+" Date              : 27.08.2021
+" Last Modified Date: 27.08.2021
 " ----- Imported Plugins ----- "
 call plug#begin('$HOME/.local/share/nvim/plugged')
 
@@ -28,6 +34,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'tmhedberg/simpylfold'
 Plug 'dpelle/vim-LanguageTool'
 Plug 'sbdchd/neoformat'
+Plug 'alpertuna/vim-header'
 
 call plug#end()
 
@@ -156,6 +163,12 @@ let g:languagetool_win_height=8
 " VimMarkdown
 let g:vim_markdown_auto_insert_bullets = 0
 let g:vim_markdown_new_list_item_indent = 0
+
+" NERDCommenter
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
 
 " ----- Custom Command ----- "
 fun! Mksession(...)
