@@ -8,7 +8,7 @@ My personal Neovim setup, featuring
 ## Dependencies
 - [Neovim](https://github.com/neovim/neovim), vanilla Vim should also work but not tested.
 - [vim-plug](https://github.com/junegunn/vim-plug)
-- Python3 with [pynvim](https://github.com/davidhalter/jedi)
+- Python3 with [pynvim](https://github.com/neovim/pynvim)
 - [LanguageTool](http://www.languagetool.org/download/). 
 Unzip a package to `~/.local/bin/LanguageTool`, or use the following commands
 
