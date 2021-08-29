@@ -15,7 +15,7 @@ Unzip a package to `~/.local/bin/LanguageTool`, or use the following commands
 ```bash
 wget https://languagetool.org/download/LanguageTool-stable.zip
 unzip LanguageTool-stable.zip -d $HOME/.local/bin/
-mv $HOME/.local/bin/LanguageTool-* $HOME/.local/bin/bin/LanguageTool
+mv $HOME/.local/bin/LanguageTool-* $HOME/.local/bin/LanguageTool
 ```
 
 ## Usage
