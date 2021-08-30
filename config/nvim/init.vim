@@ -1,21 +1,3 @@
-" File              : init.vim
-" Date              : 27.08.2021
-" Last Modified Date: 27.08.2021
-" File              : init.vim
-" Date              : 27.08.2021
-" Last Modified Date: 27.08.2021
-" File              : init.vim
-" Date              : 27.08.2021
-" Last Modified Date: 27.08.2021
-" File              : init.vim
-" Date              : 27.08.2021
-" Last Modified Date: 27.08.2021
-" File              : init.vim
-" Date              : 27.08.2021
-" Last Modified Date: 27.08.2021
-" File              : init.vim
-" Date              : 27.08.2021
-" Last Modified Date: 27.08.2021
 " ----- Imported Plugins ----- "
 call plug#begin('$HOME/.local/share/nvim/plugged')
 
@@ -46,6 +28,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'tmhedberg/simpylfold'
 Plug 'dpelle/vim-LanguageTool'
 Plug 'sbdchd/neoformat'
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 call plug#end()
 
@@ -180,6 +163,9 @@ let g:vim_markdown_new_list_item_indent = 0
 let g:NERDSpaceDelims = 1
 " Use compact syntax for prettified multi-line comments
 let g:NERDCompactSexyComs = 1
+
+" Python-mode
+" helptags $HOME/.local/share/nvim/plugged/python-mode/doc
 
 " ----- Custom Command ----- "
 fun! Mksession(...)
