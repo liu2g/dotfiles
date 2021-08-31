@@ -8,6 +8,7 @@ alias down2='/bin/ls -datr /home/liu/Downloads/** | tail -n 1 | xargs -I\{\} mv 
 alias latexmk-all='latexmk && latexmk -c'
 alias sau="sudo apt update && sudo apt upgrade"
 alias lsa='ls -a'
+alias nv='nvim'
 
 
 h2 () {
