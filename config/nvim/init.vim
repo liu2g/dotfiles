@@ -28,12 +28,16 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'tmhedberg/simpylfold'
 Plug 'dpelle/vim-LanguageTool'
 Plug 'sbdchd/neoformat'
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+" Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+" Plug 'cjrh/vim-conda'
+Plug 'puremourning/vimspector'
+Plug 'elzr/vim-json'
 
 call plug#end()
 
 " ----- Global settings ----- "
 syntax on
+let mapleader = ","
 set timeoutlen=2000
 " This saves one more key stroke
 nnoremap ; :
@@ -164,9 +168,41 @@ let g:NERDSpaceDelims = 1
 " Use compact syntax for prettified multi-line comments
 let g:NERDCompactSexyComs = 1
 
-" Python-mode
-" helptags $HOME/.local/share/nvim/plugged/python-mode/doc
+" ----- Python ----- "
+let g:jedi#goto_command = "<leader>g"
+let g:jedi#goto_assignments_command = "<leader>ga"
+let g:jedi#goto_stubs_command = "<leader>gs"
+let g:jedi#goto_definitions_command = "<leader>gd"
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#rename_command = "<leader>r"
 
+" for normal mode - the word under the cursor
+nmap <Leader>dl <Plug>VimspectorBalloonEval 
+nmap <Leader>de :VimspectorEval
+nnoremap <Leader>dc :VimspectorReset<CR>
+nmap <Leader>dw <Plug>VimspectorWatch
+nmap <Leader>dg <Plug>VimspectorContinue
+nmap <Leader>dr <Plug>VimspectorRestart
+nmap <Leader>dp <Plug>VimspectorPause
+nmap <Leader>db <Plug>VimspectorToggleBreakpoint
+nmap <Leader>dB <Plug>VimspectorToggleConditionalBreakpoint
+nmap <Leader>dt <Plug>VimspectorRunToCursor
+nmap <Leader>di <Plug>VimspectorStepInto
+nmap <Leader>do <Plug>VimspectorStepOut
+nmap <Leader>ds <Plug>VimspectorStepOver
+
+" ----- JSON ----- "
+au! BufRead,BufNewFile *.json set filetype=json
+augroup json_autocmd
+  autocmd!
+  autocmd FileType json set autoindent
+  autocmd FileType json set formatoptions=tcq2l
+  autocmd FileType json set textwidth=78 shiftwidth=2
+  autocmd FileType json set softtabstop=2 tabstop=8
+  autocmd FileType json set expandtab
+  autocmd FileType json set foldmethod=syntax
+augroup END
 " ----- Custom Command ----- "
 fun! Mksession(...)
     if a:0 > 0
@@ -185,3 +221,9 @@ endfun
 command! -nargs=* SS call Mksession(<f-args>)
 
 com! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
+
+function! VimspectorEvalHelper()
+    let exp=input("Vimspector Evaluate: ")
+    call vimspector#Evaluate(exp)
+endfun
+nnoremap <Leader>de :call VimspectorEvalHelper()<CR>
