@@ -87,3 +87,4 @@ Beware that there are a lot of new and different settings from default Vim setti
     - Autocomplete shows up at the bottom of the word in insert mode. Use `<Tab>` to go through them.
     - Indentation shows a suble guideline, use `<,><i><g>` to toggle it
     - `:Erc` to quickly **e**dit vim**rc**, `:Src` to quickly **s**ource vim**rc**
+    - `<,><o>` to open a line without going into insert

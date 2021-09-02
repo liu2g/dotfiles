@@ -12,3 +12,6 @@ Supported and alias-related tools
 - [translate-shell](https://github.com/soimort/translate-shell) quick cli Google translate
 - [WordNet](https://wordnet.princeton.edu/download/current-version#nix), may also available with packages, english language engine to find synonyms
 - Some powerline symbol fonts, can be installed from `scripts/fonts-install`
+
+After resolving dependencies, use `chsh -s $(which zsh)` to set default shell.
+Then use `install.py` to install config.

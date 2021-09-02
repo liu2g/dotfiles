@@ -80,6 +80,7 @@ set clipboard+=unnamedplus
 " Use Esc to remove search highlight
 noremap <silent><esc> <esc>:noh<CR><esc>
 
+nmap <Leader>o i<cr><Esc>
 " ----- Appearance ----- "
 " Set airline theme
 let g:airline_theme='murmur' 
