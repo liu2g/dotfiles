@@ -218,7 +218,7 @@ enable-scroll = true
 
 format = <label-state> <label-mode>
 
-label-mode = %{T4}%mode%%{T-}
+label-mode = %{T3}%mode%%{T-}
 label-mode-padding = 2
 label-mode-background = ${colors.accent}
 
@@ -280,12 +280,12 @@ ramp-signal-foreground = #666
 
 [module/wired]
 type = internal/network
-interface = lo
+interface = enp6s0
 interval = 3.0
 
 format-connected-prefix = " "
 format-connected-prefix-foreground = #666
-label-connected = %local_ip%
+label-connected = %local_ip% %downspeed:8%
 
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-prefix = " "
@@ -442,7 +442,7 @@ interval = 0.1
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 8
+thermal-zone = 2
 base-temperature = 20
 warn-temperature = 80
 
