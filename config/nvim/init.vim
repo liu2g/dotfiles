@@ -28,10 +28,9 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'tmhedberg/simpylfold'
 Plug 'dpelle/vim-LanguageTool'
 Plug 'sbdchd/neoformat'
-" Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-" Plug 'cjrh/vim-conda'
 Plug 'puremourning/vimspector'
 Plug 'elzr/vim-json'
+Plug 'lervag/vimtex'
 
 call plug#end()
 
@@ -173,9 +172,9 @@ let g:jedi#goto_command = "<leader>g"
 let g:jedi#goto_assignments_command = "<leader>ga"
 let g:jedi#goto_stubs_command = "<leader>gs"
 let g:jedi#goto_definitions_command = "<leader>gd"
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#rename_command = "<leader>r"
+let g:jedi#documentation_command = "<leader>gk"
+let g:jedi#usages_command = "<leader>gn"
+let g:jedi#rename_command = "<leader>gr"
 
 " for normal mode - the word under the cursor
 nmap <Leader>dl <Plug>VimspectorBalloonEval 
@@ -205,15 +204,16 @@ augroup json_autocmd
 augroup END
 " ----- Custom Command ----- "
 fun! Mksession(...)
+    VimspectorReset
     if a:0 > 0
         let name = a:1
     else
         let name = "Session.vim"
     endif
-    let need_tree = g:NERDTree.IsOpen()
+    let nt_open = g:NERDTree.IsOpen()
     NERDTreeClose
     execute "mksession!" . name
-    if need_tree
+    if nt_open
         call writefile(readfile(name)+['NERDTree'], name)
         NERDTree
     endif
@@ -227,3 +227,6 @@ function! VimspectorEvalHelper()
     call vimspector#Evaluate(exp)
 endfun
 nnoremap <Leader>de :call VimspectorEvalHelper()<CR>
+
+command! Erc edit $MYVIMRC
+command! Src source $MYVIMRC
