@@ -68,10 +68,15 @@ for file in $CONFIG_PATH/aliases/*(.); source $file
 # complete -o nospace -C /usr/local/bin/bit bit
 source "$CONFIG_PATH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$CONFIG_PATH/plugins/zsh-async/async.zsh"
-[[ -s /home/liu/.autojump/etc/profile.d/autojump.sh ]] && source /home/liu/.autojump/etc/profile.d/autojump.sh
+if [[ -f "/etc/profile.d/autojump.sh" ]]; then
+    [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
+else
+    [[ -s "$HOME/.autojump/etc/profile.d/autojump.sh" ]] && source "$HOME/.autojump/etc/profile.d/autojump.sh"
+fi
 source "$CONFIG_PATH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$CONFIG_PATH/plugins/zsh-sudo/sudo.plugin.zsh"
 fpath=($CONFIG_PATH/plugins/zsh-cht/ $fpath)
 
 bindkey '^z' push-line-or-edit
 bindkey -v
+
