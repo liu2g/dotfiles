@@ -31,6 +31,8 @@ Plug 'sbdchd/neoformat'
 Plug 'puremourning/vimspector'
 Plug 'elzr/vim-json'
 Plug 'lervag/vimtex'
+Plug 'skywind3000/asynctasks.vim'
+Plug 'skywind3000/asyncrun.vim'
 
 call plug#end()
 
@@ -80,7 +82,8 @@ set clipboard+=unnamedplus
 " Use Esc to remove search highlight
 noremap <silent><esc> <esc>:noh<CR><esc>
 
-nmap <Leader>o i<cr><Esc>
+nmap <Leader>o o<cr><Esc>
+nmap <Leader>O O<cr><Esc>
 " ----- Appearance ----- "
 " Set airline theme
 let g:airline_theme='murmur' 
@@ -177,7 +180,8 @@ let g:jedi#documentation_command = "<leader>gk"
 let g:jedi#usages_command = "<leader>gn"
 let g:jedi#rename_command = "<leader>gr"
 
-" for normal mode - the word under the cursor
+let g:asyncrun_open = 6
+
 nmap <Leader>dl <Plug>VimspectorBalloonEval 
 nmap <Leader>de :VimspectorEval
 nnoremap <Leader>dc :VimspectorReset<CR>
