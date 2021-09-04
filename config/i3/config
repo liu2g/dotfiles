@@ -36,7 +36,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+x mode "exit: [l]ock, [e]xit i3, [r]eboot, [s]hutdown"
 bindsym XF86PowerOff mode "exit: [l]ock, [e]xit i3, [r]eboot, [s]hutdown"
 mode "exit: [l]ock, [e]xit i3, [r]eboot, [s]hutdown" {
-  bindsym l exec "i3lock-fancy -p -f Ubuntu Mono  -- scrot -z"; mode "default"
+  bindsym l exec "i3lock-fancy -p"; mode "default"
   bindsym e exec "i3-msg exit"
   bindsym r exec "systemctl reboot"
   bindsym s exec "systemctl poweroff"
@@ -46,14 +46,16 @@ mode "exit: [l]ock, [e]xit i3, [r]eboot, [s]hutdown" {
   bindsym XF86PowerOff mode "default"
 }
 
+bindsym $mod+Tab workspace next
 # bindsym $mod+a exec "rofi -modi window,drun, \
                           # -combi-modi drun,window, \
                           # -show drun -no-lazy-grab -no-disable-history"
 
-bindsym $mod+a exec "rofi -modi file-browser-extended,window,drun \
+bindsym $mod+grave exec "rofi -modi file-browser-extended,window,drun \
                           -combi-modi drun,window,file-browser-extended \
                           -show drun -no-lazy-grab -no-disable-history"
 
+bindsym $mod+a exec pavucontrol
 ### --- Autostarts --- ###
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -72,6 +74,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Bluetooth tray icon and GUI configurator
 exec --no-startup-id blueman-applet
 
+exec --no-startup-id optimus-manager-qt
 # Compositor
 #exec compton
 
@@ -94,6 +97,7 @@ exec --no-startup-id fcitx -r
 
 exec --no-startup-id clipit
 exec --no-startup-id "xclip -sel clip < /dev/null"
+exec --no-startup-id "playerctld daemon"
 #exec_always xautolock -detectsleep -time 15 -locker  "i3lock-fancy -p -f Ubuntu Mono  -- scrot -z"\
   #-notify 30 \
   #-notifier "notify-send -u critical -t 10000 -- 'locking screen in 30 seconds'"
@@ -228,10 +232,15 @@ client.focused_inactive #373b41 #373b41 #969896 #282a2e
 client.unfocused #282a2e #282a2e #969896 #282a2e
 client.urgent #373b41 #cc6666 #ffffff #cc6666
 
+title_align center
 ### --- Window rules --- ###
 for_window [class="^Pavucontrol"] floating enable
 
 for_window [class="^KeePassXC"] floating enable
+
+for_window [class="^Qalculate-gtk"] floating enable
+
+for_window [class="^Blueman-manager"] floating enable
 
 for_window [class="^Steam$" title="^Friends$"] floating enable
 for_window [class="^Steam$" title="Steam - News"] floating enable

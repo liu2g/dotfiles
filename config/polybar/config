@@ -4,6 +4,7 @@ foreground = #eee
 linecolor = #fba922
 bordercolor = #000003
 accent = #5209
+traycolor = #751111
 
 [settings]
 screenchange-reload = true
@@ -74,7 +75,7 @@ tray-maxsize = 16
 ;tray-transparent = true
 ;tray-detached = true
 ;tray-offset-x = 50
-tray-background = ${colors.linecolor}
+tray-background = ${colors.traycolor}
 
 wm-restack = i3
 
@@ -442,7 +443,7 @@ interval = 0.1
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 2
+thermal-zone = 1
 base-temperature = 20
 warn-temperature = 80
 
@@ -478,11 +479,9 @@ format = <ramp> <label>
 label = %percentage%%
 
 ; Only applies if <ramp> is used
-ramp-0 = 🌕
-ramp-1 = 🌔
-ramp-2 = 🌓
-ramp-3 = 🌒
-ramp-4 = 🌑
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
 
 ; Only applies if <bar> is used
 bar-width = 10
