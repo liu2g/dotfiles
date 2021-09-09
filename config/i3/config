@@ -181,6 +181,12 @@ mode "displace floating: use hjkl"{
 }
 
 workspace_layout tabbed
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
 # focus the parent container
 #bindsym $mod+a focus parent
 
