@@ -25,10 +25,12 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+Return exec kitty
 
 # keepassxc keybind
-bindsym $mod+w exec keepassxc
+bindsym $mod+p exec keepassxc
 
 # flameshot
 bindsym $mod+Shift+s exec flameshot gui
+
+bindsym $mod+w exec firefox
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
