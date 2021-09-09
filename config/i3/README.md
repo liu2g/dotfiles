@@ -25,7 +25,9 @@ Misc
 - [NetworkManager](https://wiki.gnome.org/Projects/NetworkManager) wifi manager
 - [xautolock](https://linux.die.net/man/1/xautolock) inactivity autolock
 - [dunst](https://dunst-project.org/) notification daemon
-
+- (Optional) enable icon showing in title bar, use [i3-wm-iconpatch](https://aur.archlinux.org/packages/i3-wm-iconpatch/). 
+For non-Arch system, download the current working patch by clicking "Download Tarball" on the right-hand side of the AUR page.
+Extract and navigate to the root of the i3 source directory and run `patch -p1 < /path/to/patch/file`
 ## Usage
 0. Resolve for dependencies
 1. Install with `install.py`
@@ -38,8 +40,11 @@ Beware that there are a lot of new and different settings from default i3 settin
 - Arrow key related bahavior all disabled to strictly use `<h/j/k/l>`
 - Screen brightness keys use intel settings as default and 2% step
 - Volume keys use 2% step & media key support
-- `<mod-w>` launch keepass
-- `<mod-a>` launch rofi, dmenu is disabled
+- `<mod-p>` launches Keepassxc
+- `<mod-w>` launches Firefox
+- `<mod-a>` launches PulseAudio GUI configurator
+- `<mod-shift-s>` launches Flameshot 
+- ``<mod-`>`` launch rofi, dmenu is disabled
 - `<mod-x>` gives prompt for power options
 - Autolock at 15 min with a 30 sec pre-warning msg
 - `<mod-q>` to close window
@@ -48,3 +53,4 @@ Beware that there are a lot of new and different settings from default i3 settin
 - `<mod-r>` to resize window, after which use `<h/j/k/l>` to resize
 - `<mod>+mouse` to drag floating windows to move
 - `<mod+d>` to displace floating windows, during which `<h/j/k/l>` to relocate, `<mod+tab>` to switch different floating windows
+

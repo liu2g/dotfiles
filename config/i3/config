@@ -3,7 +3,11 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 ### --- Key binds --- ###
+# Main mod key
 set $mod Mod4
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec brightnessctl -q s 2%+ # increase screen brightness
@@ -21,20 +25,27 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 
-# start a terminal
+# start terminal
 bindsym $mod+Return exec kitty
 
-# keepassxc keybind
+# keepassxc
 bindsym $mod+p exec keepassxc
 
 # flameshot
 bindsym $mod+Shift+s exec flameshot gui
 
+# firefox
 bindsym $mod+w exec firefox
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+# rofi launcher
+bindsym $mod+grave exec "rofi -modi file-browser-extended,window,drun \
+                          -combi-modi drun,window,file-browser-extended \
+                          -show drun -no-lazy-grab -no-disable-history"
 
+# pulseaudio controller
+bindsym $mod+a exec pavucontrol
+
+# Power options
 bindsym $mod+x mode "exit: [l]ock, [e]xit i3, [r]eboot, [s]hutdown"
 bindsym XF86PowerOff mode "exit: [l]ock, [e]xit i3, [r]eboot, [s]hutdown"
 mode "exit: [l]ock, [e]xit i3, [r]eboot, [s]hutdown" {
@@ -48,67 +59,63 @@ mode "exit: [l]ock, [e]xit i3, [r]eboot, [s]hutdown" {
   bindsym XF86PowerOff mode "default"
 }
 
-bindsym $mod+Tab workspace next
-# bindsym $mod+a exec "rofi -modi window,drun, \
-                          # -combi-modi drun,window, \
-                          # -show drun -no-lazy-grab -no-disable-history"
-
-bindsym $mod+grave exec "rofi -modi file-browser-extended,window,drun \
-                          -combi-modi drun,window,file-browser-extended \
-                          -show drun -no-lazy-grab -no-disable-history"
-
-bindsym $mod+a exec pavucontrol
 ### --- Autostarts --- ###
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy -p --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# Prettier panel - polybar
+# panel program
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# Bluetooth tray icon and GUI configurator
+# bluetooth tray icon and GUI configurator
 exec --no-startup-id blueman-applet
 
+# optimus manager controller
 exec --no-startup-id optimus-manager-qt
-# Compositor
+
+# compositor
 #exec compton
 
-# Password manager
+# password manager
 exec --no-startup-id keepassxc
 
-# Flameshot
+# flameshot
 exec --no-startup-id flameshot
 
-# Wallpaper
+# wallpaper
 exec --no-startup-id nitrogen --restore
 
-# Notification daemon
+# notification daemon
 exec --no-startup-id dunst -config
 
 # xrandr layout
 exec_always --no-startup-id $HOME/.config/screenlayout/default.sh
 
+# input method manager
 exec --no-startup-id fcitx -r
 
+# clipboard manager
 exec --no-startup-id clipit
 exec --no-startup-id "xclip -sel clip < /dev/null"
+
+# media player daemon
 exec --no-startup-id "playerctld daemon"
-#exec_always xautolock -detectsleep -time 15 -locker  "i3lock-fancy -p -f Ubuntu Mono  -- scrot -z"\
-  #-notify 30 \
-  #-notifier "notify-send -u critical -t 10000 -- 'locking screen in 30 seconds'"
 
 ### --- Window config --- ###
+# default layout
+workspace_layout tabbed
+
 # kill focused window
 bindsym $mod+q kill
-
 bindsym --release button2 kill
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -126,12 +133,10 @@ bindsym $mod+s layout stacking
 bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
-
 # change orientation
 bindsym $mod+Shift+v split h
 bindsym $mod+v split v
 
-font pango: Noto Sans Mono 10 
 # resize windows
 bindsym $mod+r mode "resize window: <h> narrower, <j> taller, <k> shorter, <l> wider, <Shift> for larger step"
 set $tile_resize_step 1
@@ -165,6 +170,7 @@ bindsym $mod+Shift+f floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+f focus mode_toggle
 
+# displace flating window
 set $move_step 20
 bindsym $mod+d focus floating; mode "displace floating: hjkl to move"
 mode "displace floating: use hjkl"{
@@ -180,13 +186,12 @@ mode "displace floating: use hjkl"{
     bindsym $mod+d mode "default"
 }
 
-workspace_layout tabbed
-
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
 
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
+#
 # focus the parent container
 #bindsym $mod+a focus parent
 
@@ -233,14 +238,17 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 
 ### --- Appearance --- ###
-for_window [class=".*"] border pixel 2
+# title
+title_align center
+font pango: Noto Sans Mono 10 
 
+# window border
+for_window [class=".*"] border pixel 2
 client.focused #81a2be #81a2be #1d1f21 #282a2e
 client.focused_inactive #373b41 #373b41 #969896 #282a2e
 client.unfocused #282a2e #282a2e #969896 #282a2e
 client.urgent #373b41 #cc6666 #ffffff #cc6666
 
-title_align center
 ### --- Window rules --- ###
 for_window [class="^Pavucontrol"] floating enable
 
