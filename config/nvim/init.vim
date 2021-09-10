@@ -82,8 +82,8 @@ set clipboard+=unnamedplus
 " Use Esc to remove search highlight
 noremap <silent><esc> <esc>:noh<CR><esc>
 
-nmap <Leader>o o<cr><Esc>
-nmap <Leader>O O<cr><Esc>
+nmap <Leader>o o<Esc>
+nmap <Leader>O O<Esc>
 " ----- Appearance ----- "
 " Set airline theme
 let g:airline_theme='murmur' 
@@ -171,7 +171,7 @@ let g:NERDSpaceDelims = 1
 " Use compact syntax for prettified multi-line comments
 let g:NERDCompactSexyComs = 1
 
-" ----- Python ----- "
+" Jedi
 let g:jedi#goto_command = "<leader>g"
 let g:jedi#goto_assignments_command = "<leader>ga"
 let g:jedi#goto_stubs_command = "<leader>gs"
@@ -180,8 +180,16 @@ let g:jedi#documentation_command = "<leader>gk"
 let g:jedi#usages_command = "<leader>gn"
 let g:jedi#rename_command = "<leader>gr"
 
+" Asynctasks 
 let g:asyncrun_open = 6
+function! AsyncTaskHelper()
+    let task=input("Run async task:")
+    execute "AsyncTask" . task
+endfun
+nnoremap <Leader>tg :call AsyncTaskHelper()<CR> 
+nnoremap <Leader>tq :call asyncrun#quickfix_toggle(g:asyncrun_open)<CR>
 
+" Vimspector
 nmap <Leader>dl <Plug>VimspectorBalloonEval 
 nmap <Leader>de :VimspectorEval
 nnoremap <Leader>dc :VimspectorReset<CR>
@@ -195,8 +203,15 @@ nmap <Leader>dt <Plug>VimspectorRunToCursor
 nmap <Leader>di <Plug>VimspectorStepInto
 nmap <Leader>do <Plug>VimspectorStepOut
 nmap <Leader>ds <Plug>VimspectorStepOver
+function! VimspectorEvalHelper()
+    let exp=input("Vimspector Evaluate:")
+    call vimspector#Evaluate(exp)
+endfun
+nnoremap <Leader>de :call VimspectorEvalHelper()<CR>
+command! Erc edit $MYVIMRC
+command! Src source $MYVIMRC
 
-" ----- JSON ----- "
+" Vim-json
 au! BufRead,BufNewFile *.json set filetype=json
 augroup json_autocmd
   autocmd!
@@ -207,6 +222,7 @@ augroup json_autocmd
   autocmd FileType json set expandtab
   autocmd FileType json set foldmethod=syntax
 augroup END
+
 " ----- Custom Command ----- "
 fun! Mksession(...)
     VimspectorReset
@@ -227,11 +243,3 @@ command! -nargs=* SS call Mksession(<f-args>)
 
 com! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
 
-function! VimspectorEvalHelper()
-    let exp=input("Vimspector Evaluate: ")
-    call vimspector#Evaluate(exp)
-endfun
-nnoremap <Leader>de :call VimspectorEvalHelper()<CR>
-
-command! Erc edit $MYVIMRC
-command! Src source $MYVIMRC
