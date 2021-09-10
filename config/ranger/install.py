@@ -18,3 +18,11 @@ except IsADirectoryError:
 linked_config_path.symlink_to(real_config_path,
         target_is_directory=True)
 
+custom_scripts = ["dragon-cp.sh", "dragon-dl.sh", "dragon-mv.sh"]
+for s in custom_scripts:
+    linked_script_path = Path.home() / config_dict["bin_path"] / s
+    real_script_path = file_path.parents[0] / s
+
+    linked_script_path.unlink(missing_ok=True)
+
+    linked_script_path.symlink_to(real_script_path)
