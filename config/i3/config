@@ -23,6 +23,7 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86Calculator exec qalculate-gtk
 
 
 # start terminal
@@ -80,9 +81,6 @@ exec --no-startup-id blueman-applet
 # optimus manager controller
 exec --no-startup-id optimus-manager-qt
 
-# compositor
-#exec compton
-
 # password manager
 exec --no-startup-id keepassxc
 
@@ -93,7 +91,7 @@ exec --no-startup-id flameshot
 exec --no-startup-id nitrogen --restore
 
 # notification daemon
-exec --no-startup-id dunst -config
+exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
 
 # xrandr layout
 exec_always --no-startup-id $HOME/.config/screenlayout/default.sh
@@ -107,6 +105,12 @@ exec --no-startup-id "xclip -sel clip < /dev/null"
 
 # media player daemon
 exec --no-startup-id "playerctld daemon"
+
+# compositor ALWAYS PUT AT AFTER XRANDR
+exec_always --no-startup-id compton -CGb
+
+# disable monitor timeout
+exec_always --no-startup-id disable_timeout_monitor.sh
 
 ### --- Window config --- ###
 # default layout
@@ -244,6 +248,8 @@ font pango: Noto Sans Mono 10
 
 # window border
 for_window [class=".*"] border pixel 2
+for_window [floating] border normal
+
 client.focused #81a2be #81a2be #1d1f21 #282a2e
 client.focused_inactive #373b41 #373b41 #969896 #282a2e
 client.unfocused #282a2e #282a2e #969896 #282a2e
@@ -257,6 +263,8 @@ for_window [class="^KeePassXC"] floating enable
 for_window [class="^Qalculate-gtk"] floating enable
 
 for_window [class="^Blueman-manager"] floating enable
+
+for_window [class="^Yt-dlg"] floating enable
 
 for_window [class="^Steam$" title="^Friends$"] floating enable
 for_window [class="^Steam$" title="Steam - News"] floating enable
