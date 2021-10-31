@@ -84,6 +84,10 @@ noremap <silent><esc> <esc>:noh<CR><esc>
 
 nmap <Leader>o o<Esc>
 nmap <Leader>O O<Esc>
+
+" Folds open by default
+set nofoldenable
+
 " ----- Appearance ----- "
 " Set airline theme
 let g:airline_theme='murmur' 
