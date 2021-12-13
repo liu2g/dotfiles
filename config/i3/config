@@ -59,7 +59,7 @@ mode $power_mode {
   bindsym Escape mode "default"
   bindsym Return mode "default"
   bindsym $mod+x mode "default"
-  bindsym XF86PowerOff mode "default"
+  bindsym XF86PowerOff mode "systemctl poweroff"
 }
 
 ### --- Autostarts --- ###
