@@ -18,9 +18,9 @@ else
 
   for m in $screens; do
     if [[ $primary == $m ]]; then
-        MONITOR=$m polybar top &
         MONITOR=$m polybar bottom &
     else
+        MONITOR=$m polybar top &
         MONITOR=$m polybar bottom &
     fi
   done

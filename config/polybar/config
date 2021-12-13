@@ -111,7 +111,7 @@ modules-left = i3
 ;modules-left = xwindow
 ;modules-center = xwindow
 modules-center =
-modules-right = volume backlight date power-menu
+modules-right = volume backlight popup-calendar power-menu
 
 wm-restack = ${bar/top.wm-restack}
 
@@ -435,6 +435,8 @@ menu-2-1-exec = menu-open-0
 type = internal/xwindow
 format = <label>
 label-maxlen = 500
+; Label with mouse actions (A1: left click; A2: middle click; A3: right click)
+label = %{A1:i3-msg floating toggle:}%{A2:xdotool getwindowfocus windowkill:}%{A3:i3-msg move scratchpad:}%title:0:30:...%%{A}%{A}%{A}
 
 [module/counter]
 type = internal/counter
@@ -488,5 +490,14 @@ bar-width = 10
 bar-indicator = |
 bar-fill = ─
 bar-empty = ─
+
+[module/popup-calendar]
+type = custom/script
+exec = ~/.config/polybar/scripts/popup-calendar.sh
+interval = 5
+click-left = ~/.config/polybar/scripts/popup-calendar.sh --popup
+format-background = ${colors.alt-background}
+format-foreground = ${colors.alt-foreground}
+label = %output:25%
 
 ; vim:ft=dosini
