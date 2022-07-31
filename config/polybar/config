@@ -65,9 +65,9 @@ font-3 = Noto Sans Mono:pixelsize=10;1;antialias=false
 
 ;modules-left = i3
 label-active-font = 2
-modules-left = player-mpris-tail
-modules-center = xwindow
-modules-right = wired wifi battery temperature memory cpu fs-root
+;modules-left = player-mpris-tail
+;modules-center = xwindow
+modules-right = updates-pacman-aurhelper wired wifi battery temperature memory cpu fs-root
 
 tray-position = right
 tray-padding = 4
@@ -281,7 +281,7 @@ ramp-signal-foreground = #666
 
 [module/wired]
 type = internal/network
-interface = enp6s0
+interface = enp7s0
 interval = 3.0
 
 format-connected-prefix = " "
@@ -500,4 +500,10 @@ format-background = ${colors.alt-background}
 format-foreground = ${colors.alt-foreground}
 label = %output:25%
 
+[module/updates-pacman-aurhelper]
+type = custom/script
+exec = ~/.config/polybar/scripts/updates-pacman-aurhelper.sh
+interval = 600
+
 ; vim:ft=dosini
+
