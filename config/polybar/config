@@ -67,7 +67,7 @@ font-3 = Noto Sans Mono:pixelsize=10;1;antialias=false
 label-active-font = 2
 ;modules-left = player-mpris-tail
 ;modules-center = xwindow
-modules-right = updates-pacman-aurhelper wired wifi battery temperature memory cpu fs-root
+modules-right = updates-pacman-aurhelper wired wifi battery temperature cpu memory gpu
 
 tray-position = right
 tray-padding = 4
@@ -257,7 +257,7 @@ format-prefix-foreground = ${colors.foreground}
 [module/wifi]
 type = internal/network
 interface = wlp2s0
-interval = 3.0
+interval = 2
 ;udspeed-minwidth = 0
 
 format-connected = <ramp-signal> <label-connected>
@@ -446,6 +446,7 @@ interval = 0.1
 [module/temperature]
 type = internal/temperature
 thermal-zone = 1
+hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input
 base-temperature = 20
 warn-temperature = 80
 
@@ -504,6 +505,12 @@ label = %output:25%
 type = custom/script
 exec = ~/.config/polybar/scripts/updates-pacman-aurhelper.sh
 interval = 600
+
+[module/gpu]
+type = custom/script
+exec = ~/.config/polybar/scripts/gpu.sh
+click-left = ~/.config/polybar/scripts/gpu.sh
+interval = 2
 
 ; vim:ft=dosini
 

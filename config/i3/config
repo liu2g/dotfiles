@@ -50,6 +50,9 @@ bindsym $mod+a exec pavucontrol
 # system monitoring center
 bindsym $mod+BackSpace exec system-monitoring-center
 
+# file manager
+bindsym $mod+slash exec thunar
+
 # Power options
 set $power_mode "exit: [l]ock, [e]xit i3, [r]eboot, [s]hutdown"
 bindsym $mod+x mode $power_mode
@@ -64,6 +67,9 @@ mode $power_mode {
   bindsym $mod+x mode "default"
   bindsym XF86PowerOff mode "systemctl poweroff"
 }
+
+# text entry dialog to make input method happen
+bindsym $mod+Tab exec zenity --entry --width=500 --title="Enter text to copy into selection" | xclip -selection clipboard
 
 ### --- Autostarts --- ###
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
@@ -282,7 +288,7 @@ client.urgent #373b41 #cc6666 #ffffff #cc6666
 
 ### --- Window rules --- ###
 for_window [all] title_window_icon on
-for_window [all] title_window_icon padding 5px
+for_window [all] title_window_icon padding 10px
 
 for_window [class="^Pavucontrol"] floating enable
 
@@ -299,4 +305,4 @@ for_window [class="^Protonvpn"] floating enable
 
 for_window [instance="system-monitoring-center"] floating enable
 
-for_window [instance="QQ.exe"] floating enable, move container to workspace number $ws2
+for_window [instance="qq.exe"] floating enable, move container to workspace number $ws2
