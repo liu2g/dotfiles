@@ -3,7 +3,7 @@
 WIDTH=270
 HEIGHT=274
 BOTTOM=false
-DATE="$(date +"   %Y-%m-%d, %a  %H:%M ")"
+DATE="$(date +" 󰃭   %Y-%m-%d, %a  󰅐   %H:%M")"
 
 case "$1" in
     --popup)

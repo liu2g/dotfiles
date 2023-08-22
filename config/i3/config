@@ -89,9 +89,6 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # bluetooth tray icon and GUI configurator
 exec --no-startup-id blueman-applet
 
-# optimus manager controller
-exec --no-startup-id optimus-manager-qt
-
 # password manager
 exec --no-startup-id keepassxc
 
@@ -135,10 +132,20 @@ exec --no-startup-id udiskie --smart-tray
 exec --no-startup-id signal-desktop --start-in-tray
 
 # email client
-exec --no-startup-id electron-mail
+# exec --no-startup-id electron-mail
+# exec --no-startup-id "sleep 3; protonmail-bridge --no-window"
+# exec --no-startup-id birdtray
+exec --no-startup-id ferdium
+
 
 # discord client
-exec --no-startup-id discord --start-minimized
+# exec --no-startup-id discord --start-minimized
+
+# VPN client
+exec --no-startup-id mullvad-vpn
+
+# Temporary fix: nvidia flicker
+exec --no-startup-id nvidia-settings -a "[gpu:0]/GPUPowerMizerMode=1"
 
 
 ### --- Window config --- ###
@@ -300,6 +307,10 @@ for_window [class="^Qalculate-gtk"] floating enable
 
 for_window [class="Steam"] floating enable
 for_window [class="Steam" title="^Steam$"] floating disable
+for_window [class="steamwebhelper"] floating enable
+for_window [class="steamwebhelper" title="^Steam$"] floating disable
+for_window [class="steam"] floating enable
+for_window [class="steam" title="^Steam$"] floating disable
 
 for_window [title="^popup-calendar"] floating enable, move position mouse
 
@@ -307,4 +318,6 @@ for_window [class="^Protonvpn"] floating enable
 
 for_window [instance="system-monitoring-center"] floating enable
 
-for_window [instance="qq.exe"] floating enable, move container to workspace number $ws2
+for_window [instance="qq.exe"] floating enable
+
+for_window [class="Proton Mail Bridge"] floating enable, move position mouse

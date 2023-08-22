@@ -5,3 +5,4 @@ blueman-applet &
 keepassxc &
 flameshot &
 nm-applet &
+$HOME/.config/screenlayout/default.sh

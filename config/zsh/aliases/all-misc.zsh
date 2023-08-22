@@ -9,6 +9,8 @@ alias latexmk-all='latexmk && latexmk -c'
 alias sau="sudo apt update && sudo apt upgrade"
 alias lsa='ls -a'
 alias nv='nvim'
+alias movebook='rsync -auh ~/Downloads/* ~/SSD/Books_new --remove-source-files; find ~/Downloads -type d -empty -delete'
+alias logdeck="ssh deck@192.168.0.189 -p 296"
 
 
 h2 () {
@@ -29,5 +31,9 @@ closeto() {
 	echo ""
 	wn $1 -synsr | grep -v ^$
 	return 0
+}
+
+lastbook() {
+	DIR=$(find $HOME/SSD/Books_new -name $1); [[ ! -z "$DIR" ]] && {date -r "$DIR" "+%F"; /bin/ls -t "$DIR" | head -n 1; thunar "file://$DIR"}
 }
 

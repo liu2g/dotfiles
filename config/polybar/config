@@ -59,8 +59,7 @@ module-margin-left = 1
 module-margin-right = 2
 
 font-0 = Noto Sans CJK JP:pixelsize=10;1
-font-1 = siji:pixelsize=10;1
-font-2 = Wuncon Siji:pixelsize=10;1
+font-1 = Iosevka Nerd Font:pixelsize=10;1
 font-3 = Noto Sans Mono:pixelsize=10;1;antialias=false
 
 ;modules-left = i3
@@ -111,7 +110,7 @@ modules-left = i3
 ;modules-left = xwindow
 ;modules-center = xwindow
 modules-center =
-modules-right = volume backlight popup-calendar power-menu
+modules-right = mullvad volume backlight popup-calendar power-menu
 
 wm-restack = ${bar/top.wm-restack}
 
@@ -244,15 +243,13 @@ label-visible-padding = ${module/bspwm.label-empty-padding}
 type = internal/cpu
 interval = 2
 label = %percentage%%
-format-prefix = " "
-format-prefix-foreground = #666
+format-prefix = "   "
 
 [module/memory]
 type = internal/memory
 interval = 2
 label = %percentage_used%%
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground}
+format-prefix = "   "
 
 [module/wifi]
 type = internal/network
@@ -261,42 +258,36 @@ interval = 2
 ;udspeed-minwidth = 0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-prefix = " "
-format-connected-prefix-foreground = #666
+format-connected-prefix = "󰖩  "
 format-connected-prefix-offset = -6
 label-connected = %downspeed:8%
 
 ;format-disconnected = <label-disconnected>
-;format-disconnected-prefix = " "
+;format-disconnected-prefix = "󰖪  "
 ;format-disconnected-prefix-foreground = #666
 ;label-disconnected = not connected
-;label-disconnected-foreground = #999
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = #666
+ramp-signal-0 = 󰤯
+ramp-signal-1 = 󰤟
+ramp-signal-2 = 󰤢
+ramp-signal-3 = 󰤥
+ramp-signal-4 = 󰤨
 
 [module/wired]
 type = internal/network
 interface = enp7s0
 interval = 3.0
 
-format-connected-prefix = " "
-format-connected-prefix-foreground = #666
+format-connected-prefix = "󰲝  "
 label-connected = %local_ip% %downspeed:8%
 
 ;format-disconnected = <label-disconnected>
-;format-disconnected-prefix = " "
-;format-disconnected-prefix-foreground = #666
+;format-disconnected-prefix = "󰲜 "
 ;label-disconnected = not connected
-;label-disconnected-foreground = #999
 
 [module/date]
 type = internal/date
-label = %{F#666}%{F-} %date%  %{F#e60053}%{F-} %time%
+label = %{F#666}󰃭%{F-} %date%  %{F#e60053}󰥔%{F-} %time%
 date = "%a %Y-%m-%d"
 time = %H:%M
 interval = 5
@@ -308,7 +299,7 @@ type = internal/pulseaudio
 ;   <label-volume> (default)
 ;   <ramp-volume>
 ;   <bar-volume>
-format-volume = <ramp-volume> <label-volume>
+format-volume = <ramp-volume>  <label-volume>
 
 ; Available tags:
 ;   <label-muted> (default)
@@ -324,13 +315,13 @@ format-volume = <ramp-volume> <label-volume>
 ; Available tokens:
 ;   %percentage% (default)
 ;   %decibels%
-label-muted = MUTE
+label-muted = 󰝟 MUTE
 label-muted-foreground = #666
 
 ; Only applies if <ramp-volume> is used
-ramp-volume-1 = 
-ramp-volume-2 = 
-ramp-volume-0 = 
+ramp-volume-1 = 󰖀
+ramp-volume-2 = 󰕾
+ramp-volume-0 = 󰕿
 
 ; Right and Middle click
 click-right = pavucontrol
@@ -340,10 +331,8 @@ click-right = pavucontrol
 
 ;format-volume = <ramp-volume> <bar-volume>
 ;label-volume = VOL
-;label-volume-foreground = ${root.foreground}
 
-;format-muted-prefix = " "
-;format-muted-foreground = #777
+;format-muted-prefix = "󰝟 "
 ;label-muted = "---sound muted---"
 
 ;bar-volume-width = 8
@@ -376,18 +365,15 @@ format-discharging = <ramp-capacity> <label-discharging>
 label-discharging = %percentage%% %time%
 
 format-full = <label-full>
-format-full-prefix = " "
-format-full-prefix-foreground = #666
+format-full-prefix = "󱈑 "
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = #666
+ramp-capacity-0 = 󱊡
+ramp-capacity-1 = 󱊢
+ramp-capacity-2 = 󱊣
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = #666
+animation-charging-0 = 󱊤
+animation-charging-1 = 󱊥
+animation-charging-2 = 󱊦
 animation-charging-framerate = 750
 
 ;[module/battery-multi]
@@ -399,8 +385,8 @@ animation-charging-framerate = 750
 [module/power-menu]
 type = custom/menu
 
-label-open = 
-label-close = 
+label-open = 󰐥
+label-close = 󱞪
 label-separator = /
 label-separator-margin = 1
 
@@ -450,20 +436,22 @@ hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input
 base-temperature = 20
 warn-temperature = 80
 
-format =  <ramp> <label>
+format =  <ramp>  <label>
 format-warn = <ramp> <label-warn>
 
 label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-color1 = #666
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
 
 [module/player-mpris-tail]
 type = custom/script
-exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '♬ {artist} - {title}'
+exec = ~/.config/polybar/scripts/player-mpris-tail.py -f ' {artist} - {title}'
 tail = true
 click-left = ~/.config/polybar/scripts/player-mpris-tail.py previous &
 click-right = ~/.config/polybar/scripts/player-mpris-tail.py next &
@@ -483,7 +471,7 @@ label = %percentage%%
 
 ; Only applies if <ramp> is used
 ramp-0 = 
-ramp-1 = 
+ramp-1 = 󱎖
 ramp-2 = 
 
 ; Only applies if <bar> is used
@@ -511,6 +499,13 @@ type = custom/script
 exec = ~/.config/polybar/scripts/gpu.sh
 click-left = ~/.config/polybar/scripts/gpu.sh
 interval = 2
+
+[module/mullvad]
+type = custom/script
+exec = ~/.config/polybar/scripts/mullvad.sh --status
+click-left = ~/.config/polybar/scripts/mullvad.sh --toggle
+click-middle = ~/.config/polybar/scripts/mullvad.sh --reconnect
+interval = 1
 
 ; vim:ft=dosini
 
