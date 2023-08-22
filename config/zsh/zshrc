@@ -34,8 +34,6 @@ setopt appendhistory
 # Global config location
 CONFIG_PATH="/home/liu/.config/zsh"
 
-cat $CONFIG_PATH/A.txt
-
 
 # Autodetect the emulator
 export EMULATOR=$(ps -o comm= -p "$(($(ps -o ppid= -p "$(($(ps -o sid= -p "$$")))")))")
@@ -72,3 +70,5 @@ autoload -U bashcompinit
 bashcompinit
 eval "$(register-python-argcomplete pipx)"
 
+
+if (command -v neofetch &> /dev/null); then neofetch; fi
