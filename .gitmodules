@@ -17,12 +17,3 @@
 [submodule "config/zsh/themes/polyglot"]
 	path = config/zsh/themes/polyglot
 	url = https://github.com/agkozak/polyglot.git
-[submodule "config/zsh/themes/asciigit"]
-	path = config/zsh/themes/asciigit
-	url = https://github.com/cemsbr/asciigit.git
-[submodule "config/zsh/plugins/autojump"]
-	path = config/zsh/plugins/autojump
-	url = https://github.com/wting/autojump.git
-[submodule "config/zsh/themes/powerlevel10k"]
-	path = config/zsh/themes/powerlevel10k
-	url = https://github.com/romkatv/powerlevel10k.git

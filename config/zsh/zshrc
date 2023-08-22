@@ -40,16 +40,8 @@ cat $CONFIG_PATH/A.txt
 # Autodetect the emulator
 export EMULATOR=$(ps -o comm= -p "$(($(ps -o ppid= -p "$(($(ps -o sid= -p "$$")))")))")
 
-if [[ "${EMULATOR}" = "yakuake" ]] || [[ "${EMULATOR}" = "tilda" ]]
-then
-    # Created by newuser for 5.7.1
-    source "$CONFIG_PATH/themes/powerlevel10k/powerlevel10k.zsh-theme"
-
-    # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-    [[ ! -f "$CONFIG_PATH/themes/p10k.zsh" ]] || source "$CONFIG_PATH/themes/p10k.zsh"
-else
-    source "$CONFIG_PATH/themes/polyglot/polyglot.sh"
-fi
+# Theme
+source "$CONFIG_PATH/themes/polyglot/polyglot.sh"
 
 # Install aliases
 for file in $CONFIG_PATH/aliases/*(.); source $file
