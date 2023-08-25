@@ -65,19 +65,14 @@ for file in $CONFIG_PATH/aliases/*(.); source $file
 
 # Load plugins
 # complete -o nospace -C /usr/local/bin/bit bit
+if [[ -f /usr/share/autojump/autojump.zsh ]]; then source /usr/share/autojump/autojump.zsh; fi
 source "$CONFIG_PATH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$CONFIG_PATH/plugins/zsh-async/async.zsh"
-if [[ -f "/etc/profile.d/autojump.sh" ]]; then
-    [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
-else
-    [[ -s "$HOME/.autojump/etc/profile.d/autojump.sh" ]] && source "$HOME/.autojump/etc/profile.d/autojump.sh"
-fi
 source "$CONFIG_PATH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$CONFIG_PATH/plugins/zsh-sudo/sudo.plugin.zsh"
 source "$CONFIG_PATH/plugins/conda-zsh-completion/conda-zsh-completion.plugin.zsh"
 source "$CONFIG_PATH/plugins/flatpak-zsh-completion/flatpak.plugin.zsh"
 fpath=($CONFIG_PATH/plugins/zsh-cht/ $fpath)
-source /usr/share/autojump/autojump.sh
 autoload -Uz compinit && compinit
 
 if ( command -v pipx &> /dev/null ); then
