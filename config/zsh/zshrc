@@ -1,3 +1,5 @@
+autoload -Uz compinit && compinit
+
 # The following lines were added by compinstall
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' expand prefix suffix
@@ -73,6 +75,7 @@ fi
 source "$CONFIG_PATH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$CONFIG_PATH/plugins/zsh-sudo/sudo.plugin.zsh"
 source "$CONFIG_PATH/plugins/conda-zsh-completion/conda-zsh-completion.plugin.zsh"
+source "$CONFIG_PATH/plugins/flatpak-zsh-completion/flatpak.plugin.zsh"
 fpath=($CONFIG_PATH/plugins/zsh-cht/ $fpath)
 source /usr/share/autojump/autojump.sh
 autoload -Uz compinit && compinit

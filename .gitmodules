@@ -21,3 +21,7 @@
 	path = config/zsh/plugins/conda-zsh-completion
 	url = git@github.com:conda-incubator/conda-zsh-completion.git
 	branch = master
+[submodule "config/zsh/plugins/flatpak-zsh-completion"]
+	path = config/zsh/plugins/flatpak-zsh-completion
+	url = git@github.com:bilelmoussaoui/flatpak-zsh-completion.git
+	branch = master

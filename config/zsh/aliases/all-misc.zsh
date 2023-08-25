@@ -12,6 +12,7 @@ alias nv='nvim'
 alias movebook='rsync -auh ~/Downloads/* ~/SSD/Books_new --remove-source-files; find ~/Downloads -type d -empty -delete'
 alias logdeck="ssh deck@192.168.0.189 -p 296"
 if (! command -v bat &> /dev/null); then alias bat='batcat'; fi
+if (! command -v octave &> /dev/null); then alias octave='flatpak run org.octave.Octave'; fi
 
 
 h2 () {
