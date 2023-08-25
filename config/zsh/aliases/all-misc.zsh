@@ -11,6 +11,7 @@ alias lsa='ls -a'
 alias nv='nvim'
 alias movebook='rsync -auh ~/Downloads/* ~/SSD/Books_new --remove-source-files; find ~/Downloads -type d -empty -delete'
 alias logdeck="ssh deck@192.168.0.189 -p 296"
+if (! command -v bat &> /dev/null); then alias bat='batcat'; fi
 
 
 h2 () {
@@ -37,3 +38,4 @@ lastbook() {
 	DIR=$(find $HOME/SSD/Books_new -name $1); [[ ! -z "$DIR" ]] && {date -r "$DIR" "+%F"; /bin/ls -t "$DIR" | head -n 1; thunar "file://$DIR"}
 }
 
+function chpwd() {ls}

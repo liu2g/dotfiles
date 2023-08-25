@@ -61,14 +61,36 @@ fi
 source "$CONFIG_PATH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$CONFIG_PATH/plugins/zsh-sudo/sudo.plugin.zsh"
 fpath=($CONFIG_PATH/plugins/zsh-cht/ $fpath)
+source /usr/share/autojump/autojump.sh
 
 bindkey '^z' push-line-or-edit
 bindkey '^R' history-incremental-search-backward
 
-
-autoload -U bashcompinit
-bashcompinit
-eval "$(register-python-argcomplete pipx)"
+if ( command -v pipx &> /dev/null ); then
+	autoload -U bashcompinit
+	bashcompinit
+	eval "$(register-python-argcomplete pipx)"
+fi
 
 
 if (command -v neofetch &> /dev/null); then neofetch; fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/liu/.local/lib/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/liu/.local/lib/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/home/liu/.local/lib/mambaforge/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/liu/.local/lib/mambaforge/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/home/liu/.local/lib/mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "/home/liu/.local/lib/mambaforge/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+
