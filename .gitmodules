@@ -17,3 +17,7 @@
 [submodule "config/zsh/themes/polyglot"]
 	path = config/zsh/themes/polyglot
 	url = https://github.com/agkozak/polyglot.git
+[submodule "config/zsh/plugins/conda-zsh-completion"]
+	path = config/zsh/plugins/conda-zsh-completion
+	url = git@github.com:conda-incubator/conda-zsh-completion.git
+	branch = master

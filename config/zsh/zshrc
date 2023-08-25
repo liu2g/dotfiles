@@ -1,5 +1,3 @@
-autoload -Uz compinit && compinit
-
 # The following lines were added by compinstall
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' expand prefix suffix
@@ -29,53 +27,10 @@ setopt nomatch
 unsetopt beep
 bindkey -v
 setopt appendhistory
-
-
-# Global config location
-CONFIG_PATH="/home/liu/.config/zsh"
-
-
-# Autodetect the emulator
-export EMULATOR=$(ps -o comm= -p "$(($(ps -o ppid= -p "$(($(ps -o sid= -p "$$")))")))")
-
-# Theme
-source "$CONFIG_PATH/themes/polyglot/polyglot.sh"
-
-# Install aliases
-for file in $CONFIG_PATH/aliases/*(.); source $file
-
-# Verbose PATH
-# echo "[Current PATH have]"
-# tr ':' '\n' <<< "$PATH"autoload -U +X bashcompinit && bashcompinit
-
-
-# Load plugins
-# complete -o nospace -C /usr/local/bin/bit bit
-source "$CONFIG_PATH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "$CONFIG_PATH/plugins/zsh-async/async.zsh"
-if [[ -f "/etc/profile.d/autojump.sh" ]]; then
-    [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
-else
-    [[ -s "$HOME/.autojump/etc/profile.d/autojump.sh" ]] && source "$HOME/.autojump/etc/profile.d/autojump.sh"
-fi
-source "$CONFIG_PATH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-source "$CONFIG_PATH/plugins/zsh-sudo/sudo.plugin.zsh"
-fpath=($CONFIG_PATH/plugins/zsh-cht/ $fpath)
-source /usr/share/autojump/autojump.sh
-
 bindkey '^z' push-line-or-edit
 bindkey '^R' history-incremental-search-backward
 
-if ( command -v pipx &> /dev/null ); then
-	autoload -U bashcompinit
-	bashcompinit
-	eval "$(register-python-argcomplete pipx)"
-fi
-
-
-if (command -v neofetch &> /dev/null); then neofetch; fi
-
-# >>> conda initialize >>>
+#### START OF CONDA INIT
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/liu/.local/lib/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
@@ -92,5 +47,41 @@ unset __conda_setup
 if [ -f "/home/liu/.local/lib/mambaforge/etc/profile.d/mamba.sh" ]; then
     . "/home/liu/.local/lib/mambaforge/etc/profile.d/mamba.sh"
 fi
-# <<< conda initialize <<<
+#### END OF CONDA INIT
+
+# Global config location
+CONFIG_PATH="/home/liu/.config/zsh"
+
+# Autodetect the emulator
+export EMULATOR=$(ps -o comm= -p "$(($(ps -o ppid= -p "$(($(ps -o sid= -p "$$")))")))")
+
+# Theme
+source "$CONFIG_PATH/themes/polyglot/polyglot.sh"
+
+# Install aliases
+for file in $CONFIG_PATH/aliases/*(.); source $file
+
+# Load plugins
+# complete -o nospace -C /usr/local/bin/bit bit
+source "$CONFIG_PATH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$CONFIG_PATH/plugins/zsh-async/async.zsh"
+if [[ -f "/etc/profile.d/autojump.sh" ]]; then
+    [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
+else
+    [[ -s "$HOME/.autojump/etc/profile.d/autojump.sh" ]] && source "$HOME/.autojump/etc/profile.d/autojump.sh"
+fi
+source "$CONFIG_PATH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$CONFIG_PATH/plugins/zsh-sudo/sudo.plugin.zsh"
+source "$CONFIG_PATH/plugins/conda-zsh-completion/conda-zsh-completion.plugin.zsh"
+fpath=($CONFIG_PATH/plugins/zsh-cht/ $fpath)
+source /usr/share/autojump/autojump.sh
+autoload -Uz compinit && compinit
+
+if ( command -v pipx &> /dev/null ); then
+	autoload -U bashcompinit
+	bashcompinit
+	eval "$(register-python-argcomplete pipx)"
+fi
+
+if (command -v neofetch &> /dev/null); then neofetch; fi
 
