@@ -70,6 +70,7 @@ source "$CONFIG_PATH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$CONFIG_PATH/plugins/zsh-async/async.zsh"
 source "$CONFIG_PATH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$CONFIG_PATH/plugins/zsh-sudo/sudo.plugin.zsh"
+source "$CONFIG_PATH/plugins/git-auto-fetch/git-auto-fetch.plugin.zsh"
 source "$CONFIG_PATH/plugins/conda-zsh-completion/conda-zsh-completion.plugin.zsh"
 source "$CONFIG_PATH/plugins/flatpak-zsh-completion/flatpak.plugin.zsh"
 fpath=($CONFIG_PATH/plugins/zsh-cht/ $fpath)
