@@ -13,6 +13,16 @@ alias movebook='rsync -auh ~/Downloads/* ~/SSD/Books_new --remove-source-files; 
 alias logdeck="ssh deck@192.168.0.189 -p 296"
 if (! command -v bat &> /dev/null); then alias bat='batcat'; fi
 if (! command -v octave &> /dev/null); then alias octave='flatpak run org.octave.Octave'; fi
+if (! command -v code &> /dev/null); then alias code='flatpak run com.visualstudio.code'; fi
+
+condaex () {
+	# Extract installed pip packages
+	pip_packages=$(conda env export | grep -A9999 ".*- pip:" | grep -v "^prefix: ")
+
+	# Export conda environment without builds, and append pip packages
+	conda env export --from-history | grep -v "^prefix: "
+	echo "$pip_packages"
+}
 
 
 h2 () {
@@ -40,3 +50,4 @@ lastbook() {
 }
 
 function chpwd() {ls}
+
