@@ -82,5 +82,5 @@ if ( command -v pipx &> /dev/null ); then
 	eval "$(register-python-argcomplete pipx)"
 fi
 
-if (command -v neofetch &> /dev/null); then neofetch; fi
+if (command -v afetch &> /dev/null); then afetch; fi
 
