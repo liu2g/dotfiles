@@ -4,30 +4,16 @@ matches:
               ```$|$
               ```
   - trigger: "md.note"
-    replace: |
-              > [!note]
-              > $|$
+    replace: "> [!note]\n $|$"
   - trigger: "md.info"
-    replace: |
-              > [!info]
-              > $|$
+    replace: "> [!info]\n $|$"
   - trigger: "md.todo"
-    replace: |
-              > [!todo]
-              > $|$
+    replace: "> [!todo]\n $|$"
   - trigger: "md.tip"
-    replace: |
-              > [!tip]
-              > $|$
+    replace: "> [!tip]\n $|$"
   - trigger: "md.question"
-    replace: |
-              > [!question]
-              > $|$
+    replace: "> [!question]\n $|$"
   - trigger: "md.warning"
-    replace: |
-              > [!warning]
-              > $|$
+    replace: "> [!warning]\n $|$"
   - trigger: "md.example"
-    replace: |
-              > [!example]
-              > $|$
+    replace: "> [!example]\n $|$"
