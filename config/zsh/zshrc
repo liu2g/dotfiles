@@ -22,6 +22,7 @@ zstyle :compinstall filename '/home/liu/.zshrc'
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 setopt HIST_IGNORE_SPACE
+setopt PUSHDSILENT
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
@@ -53,6 +54,8 @@ fi
 
 # Global config location
 CONFIG_PATH="/home/liu/.config/zsh"
+
+export EDITOR=nvim
 
 # Autodetect the emulator
 export EMULATOR=$(ps -o comm= -p "$(($(ps -o ppid= -p "$(($(ps -o sid= -p "$$")))")))")

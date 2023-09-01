@@ -1,0 +1,36 @@
+matches:
+  - trigger: "tex.$"
+    replace: |
+              $$
+              $|$
+              $$
+  - trigger: "tex.gat"
+    replace: |
+              \begin{gather*}
+              $|$\\
+              \end{gather*}
+  - trigger: "tex.spl"
+    replace: |
+              \begin{split}
+              $|$&= x\\
+              &= y
+              \end{split}
+  - trigger: "tex.aln"
+    replace: |
+              \begin{align*}
+              $|$&= x\\
+              y &= z
+              \end{align*}
+  - trigger: "tex.mat"
+    replace: |
+              \begin{bmatrix}
+              $|$& \cdots & x \\
+              \vdots & \ddots & \vdots \\
+              y & \cdots & z
+              \end{bmatrix}
+  - trigger: "tex.cas"
+    replace: |
+              \begin{cases}
+              $|$& x<0\\
+              1 & x>0
+              \end{cases}
