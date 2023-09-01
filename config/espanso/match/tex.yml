@@ -4,31 +4,31 @@ matches:
               $$
               $|$
               $$
-  - trigger: "tex.gat"
+  - trigger: "tex.gather"
     replace: |
               \begin{gather*}
               $|$\\
               \end{gather*}
-  - trigger: "tex.spl"
+  - trigger: "tex.split"
     replace: |
               \begin{split}
               $|$&= x\\
               &= y
               \end{split}
-  - trigger: "tex.aln"
+  - trigger: "tex.align"
     replace: |
               \begin{align*}
               $|$&= x\\
               y &= z
               \end{align*}
-  - trigger: "tex.mat"
+  - trigger: "tex.matrix"
     replace: |
               \begin{bmatrix}
               $|$& \cdots & x \\
               \vdots & \ddots & \vdots \\
               y & \cdots & z
               \end{bmatrix}
-  - trigger: "tex.cas"
+  - trigger: "tex.cases"
     replace: |
               \begin{cases}
               $|$& x<0\\

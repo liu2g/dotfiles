@@ -3,3 +3,17 @@ matches:
     replace: |
               ```$|$
               ```
+  - trigger: "md.note"
+    replace: "> [!note]\n $|$"
+  - trigger: "md.info"
+    replace: "> [!info]\n $|$"
+  - trigger: "md.todo"
+    replace: "> [!todo]\n $|$"
+  - trigger: "md.tip"
+    replace: "> [!tip]\n $|$"
+  - trigger: "md.question"
+    replace: "> [!question]\n $|$"
+  - trigger: "md.warning"
+    replace: "> [!warning]\n $|$"
+  - trigger: "md.example"
+    replace: "> [!example]\n $|$"
