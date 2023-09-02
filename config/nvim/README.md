@@ -21,7 +21,8 @@ mv $HOME/.local/bin/LanguageTool-* $HOME/.local/bin/LanguageTool
 ```
 
 ## Usage
-After resolving for dependencies, install with `install.py`, then run Neovim (some error may pop up, ignore them) and use `:PlugInstall` to install all plugins.
+After resolving for dependencies, install with `install.py`, then run Neovim (some error may pop up, ignore them) and use `:PlugInstall` then `:UpdateRemotePlugins`
+to install all plugins.
 Beware that there are a lot of new and different settings from default Vim settings, listed below
 
 - Leader key is `<,>`
