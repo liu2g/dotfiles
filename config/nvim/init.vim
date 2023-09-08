@@ -77,7 +77,7 @@ set expandtab
 set ttyfast
 
 " Use system clipboard
-" set clipboard+=unnamedplus
+set clipboard+=unnamedplus
 
 " Use Esc to remove search highlight
 noremap <silent><esc> <esc>:noh<CR><esc>
