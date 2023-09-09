@@ -17,6 +17,7 @@ if (! command -v bat &> /dev/null); then alias bat='batcat'; fi
 if (! command -v octave &> /dev/null); then alias octave='flatpak run org.octave.Octave'; fi
 if (! command -v code &> /dev/null); then alias code='flatpak run com.visualstudio.code'; fi
 if (! command -v sioyek &> /dev/null); then alias sioyek='flatpak run com.github.ahrm.sioyek'; fi
+if (command -v matlab &> /dev/null); then alias matlabsh='matlab -nodesktop'; fi
 
 condaex () {
 	# Extract installed pip packages
