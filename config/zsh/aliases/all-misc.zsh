@@ -28,12 +28,6 @@ condaex () {
 	echo "$pip_packages"
 }
 
-
-h2 () {
-	howdoi $* -c -n 3| less --raw-control-chars --quit-if-one-screen --no-init
-	return 0
-}
-
 # Language related tools
 alias tozh='trans :zh'
 alias toen='trans :en'
