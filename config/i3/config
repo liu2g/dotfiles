@@ -51,14 +51,13 @@ bindsym $mod+a exec pavucontrol
 bindsym $mod+BackSpace exec system-monitoring-center
 
 # file manager
-bindsym $mod+slash exec thunar
+bindsym $mod+slash exec "thunar; nautilus"
 
 # Power options
 set $power_mode "exit: [l]ock, [e]xit i3, [r]eboot, [s]hutdown"
 bindsym $mod+x mode $power_mode
-bindsym XF86PowerOff mode $power_mode
 mode $power_mode {
-  bindsym l exec "i3lock-fancy -p"; mode "default"
+  bindsym l exec "i3lock-fancy -gp"; mode "default"
   bindsym e exec "i3-msg exit"
   bindsym r exec "systemctl reboot"
   bindsym s exec "systemctl poweroff"
@@ -289,8 +288,8 @@ for_window [class=".*"] border pixel 2
 for_window [floating] border normal
 
 client.focused #81a2be #81a2be #1d1f21 #282a2e
-client.focused_inactive #36393f #36393f #969896 #282a2e
-client.unfocused #2f343f #2f343f #969896 #282a2e
+client.focused_inactive #373b41 #373b41 #969896 #282a2e
+client.unfocused #282a2e #282a2e #969896 #282a2e
 client.urgent #373b41 #cc6666 #ffffff #cc6666
 
 ### --- Window rules --- ###

@@ -1,4 +1,5 @@
 #!/bin/sh
+if (! command -v nvidia-smi &> /dev/null); then exit 0; fi
 if ! gpu_temp=$(nvidia-smi --format=nounits,csv,noheader --query-gpu=temperature.gpu | xargs echo); then
     gpu_temp="??"
 fi

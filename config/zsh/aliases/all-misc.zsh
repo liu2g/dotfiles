@@ -18,6 +18,7 @@ if (! command -v octave &> /dev/null); then alias octave='flatpak run org.octave
 if (! command -v code &> /dev/null); then alias code='flatpak run com.visualstudio.code'; fi
 if (! command -v sioyek &> /dev/null); then alias sioyek='flatpak run com.github.ahrm.sioyek'; fi
 if (command -v matlab &> /dev/null); then alias matlabsh='matlab -nodesktop'; fi
+if (command -v vivado &> /dev/null); then alias vivadosh='. $(realpath $(which vivado)) -mode tcl'; fi
 
 condaex () {
 	# Extract installed pip packages
@@ -48,4 +49,8 @@ lastbook() {
 }
 
 function chpwd() {ls}
+
+function set_terminal_title() {
+  echo -en "\e]2;$@\a"
+}
 

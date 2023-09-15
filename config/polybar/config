@@ -4,7 +4,7 @@ foreground = #eee
 linecolor = #fba922
 bordercolor = #000003
 accent = #5209
-traycolor = #751111
+traycolor = #310d0b
 
 [settings]
 screenchange-reload = true
@@ -65,8 +65,8 @@ font-3 = Noto Sans Mono:pixelsize=10;1;antialias=false
 ;modules-left = i3
 label-active-font = 2
 ;modules-left = player-mpris-tail
-;modules-center = xwindow
-modules-right = updates-pacman-aurhelper wired wifi battery temperature cpu memory gpu
+modules-center = xwindow
+modules-right = updates-pacman-aurhelper wired wifi battery temperature-desktop temperature-laptop cpu memory gpu
 
 tray-position = right
 tray-padding = 4
@@ -253,25 +253,11 @@ format-prefix = "   "
 
 [module/wifi]
 type = internal/network
-interface = wlp2s0
-interval = 2
-;udspeed-minwidth = 0
+interface = wlp1s0
+interval = 3.0
 
-format-connected = <ramp-signal> <label-connected>
-format-connected-prefix = "󰖩  "
-format-connected-prefix-offset = -6
-label-connected = %downspeed:8%
-
-;format-disconnected = <label-disconnected>
-;format-disconnected-prefix = "󰖪  "
-;format-disconnected-prefix-foreground = #666
-;label-disconnected = not connected
-
-ramp-signal-0 = 󰤯
-ramp-signal-1 = 󰤟
-ramp-signal-2 = 󰤢
-ramp-signal-3 = 󰤥
-ramp-signal-4 = 󰤨
+format-connected-prefix = "󰲝  "
+label-connected = %local_ip% %downspeed:8%
 
 [module/wired]
 type = internal/network
@@ -280,10 +266,6 @@ interval = 3.0
 
 format-connected-prefix = "󰲝  "
 label-connected = %local_ip% %downspeed:8%
-
-;format-disconnected = <label-disconnected>
-;format-disconnected-prefix = "󰲜 "
-;label-disconnected = not connected
 
 [module/date]
 type = internal/date
@@ -355,13 +337,16 @@ click-right = pavucontrol
 
 [module/battery]
 type = internal/battery
-full-at = 98
+full-at = 100
 time-format = %H:%M
 
-format-charging = <animation-charging> <label-charging>
+battery = BATT
+adapter = ACAD
+
+format-charging = <animation-charging>  <label-charging>
 label-charging = %percentage%% %time%
 
-format-discharging = <ramp-capacity> <label-discharging>
+format-discharging = <ramp-capacity>  <label-discharging>
 label-discharging = %percentage%% %time%
 
 format-full = <label-full>
@@ -429,10 +414,17 @@ type = internal/counter
 format = <counter>
 interval = 0.1
 
-[module/temperature]
+[module/temperaturedesktop]
 type = internal/temperature
 thermal-zone = 1
 hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input
+base-temperature = 20
+warn-temperature = 80
+
+[module/temperature-laptop]
+type = internal/temperature
+thermal-zone = 1
+hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon5/temp1_input
 base-temperature = 20
 warn-temperature = 80
 
