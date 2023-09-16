@@ -79,6 +79,7 @@ source "$CONFIG_PATH/plugins/zsh-sudo/sudo.plugin.zsh"
 source "$CONFIG_PATH/plugins/git-auto-fetch/git-auto-fetch.plugin.zsh"
 source "$CONFIG_PATH/plugins/conda-zsh-completion/conda-zsh-completion.plugin.zsh"
 source "$CONFIG_PATH/plugins/flatpak-zsh-completion/flatpak.plugin.zsh"
+source "$CONFIG_PATH/plugins/zsh-window-title/zsh-window-title.zsh"
 fpath=($CONFIG_PATH/plugins/zsh-cht/ $fpath)
 compinit
 

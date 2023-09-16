@@ -64,9 +64,9 @@ font-3 = Noto Sans Mono:pixelsize=10;1;antialias=false
 
 ;modules-left = i3
 label-active-font = 2
-;modules-left = player-mpris-tail
+;modules-left = dunst
 modules-center = xwindow
-modules-right = updates-pacman-aurhelper wired wifi battery temperature-desktop temperature-laptop cpu memory gpu
+modules-right = updates-pacman-aurhelper wired wifi battery temperature-desktop temperature-laptop cpu memory gpu 
 
 tray-position = right
 tray-padding = 4
@@ -110,7 +110,7 @@ modules-left = i3
 ;modules-left = xwindow
 ;modules-center = xwindow
 modules-center =
-modules-right = mullvad volume backlight popup-calendar power-menu
+modules-right = mullvad volume dunst popup-calendar power-menu
 
 wm-restack = ${bar/top.wm-restack}
 
@@ -253,11 +253,16 @@ format-prefix = "   "
 
 [module/wifi]
 type = internal/network
-interface = wlp1s0
+interface = wlo1
 interval = 3.0
 
-format-connected-prefix = "󰲝  "
-label-connected = %local_ip% %downspeed:8%
+format-connected = "<ramp-signal>   <label-connected>"
+label-connected = %essid%   %upspeed:8%   %downspeed:8%
+
+ramp-signal-0 = 󰣴
+ramp-signal-1 = 󰣶
+ramp-signal-2 = 󰣸
+ramp-signal-3 = 󰣺
 
 [module/wired]
 type = internal/network
@@ -404,17 +409,14 @@ menu-2-1-exec = menu-open-0
 
 [module/xwindow]
 type = internal/xwindow
-format = <label>
 label-maxlen = 500
-; Label with mouse actions (A1: left click; A2: middle click; A3: right click)
-label = %{A1:i3-msg floating toggle:}%{A2:xdotool getwindowfocus windowkill:}%{A3:i3-msg move scratchpad:}%title:0:30:...%%{A}%{A}%{A}
 
 [module/counter]
 type = internal/counter
 format = <counter>
 interval = 0.1
 
-[module/temperaturedesktop]
+[module/temperature-desktop]
 type = internal/temperature
 thermal-zone = 1
 hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input
@@ -451,20 +453,15 @@ click-middle = ~/.config/polybar/scripts/player-mpris-tail.py play-pause &
 
 [module/backlight]
 type = internal/backlight
-card = intel_backlight
-use-actual-brightness = true
+card = amdgpu_bl0
+use-actual-brightness = false
 enable-scroll = false
 
-format = <ramp> <label>
+format = <label>
 
 ; Available tokens:
 ;   %percentage% (default)
 label = %percentage%%
-
-; Only applies if <ramp> is used
-ramp-0 = 
-ramp-1 = 󱎖
-ramp-2 = 
 
 ; Only applies if <bar> is used
 bar-width = 10
@@ -498,6 +495,12 @@ exec = ~/.config/polybar/scripts/mullvad.sh --status
 click-left = ~/.config/polybar/scripts/mullvad.sh --toggle
 click-middle = ~/.config/polybar/scripts/mullvad.sh --reconnect
 interval = 1
+
+[module/dunst]
+type = custom/script
+exec = ~/.config/polybar/scripts/dunst.sh
+click-left = dunstctl set-paused toggle
+interval = 0.5
 
 ; vim:ft=dosini
 
