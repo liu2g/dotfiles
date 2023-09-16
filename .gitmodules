@@ -25,3 +25,7 @@
 	path = config/zsh/plugins/flatpak-zsh-completion
 	url = git@github.com:bilelmoussaoui/flatpak-zsh-completion.git
 	branch = master
+[submodule "config/zsh/plugins/zsh-window-title"]
+	path = config/zsh/plugins/zsh-window-title
+	url = git@github.com:olets/zsh-window-title.git
+	branch = main
