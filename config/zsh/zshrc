@@ -55,6 +55,14 @@ if [ -f "/home/liu/.local/lib/mambaforge/etc/profile.d/mamba.sh" ]; then
 fi
 #### END OF CONDA INIT
 
+# Check if .local/bin is in PATH
+if [[ :$PATH: == *:".local/bin":* ]] ; then
+    # OK
+else
+    export PATH=$PATH:$HOME/.local/bin
+fi
+
+
 # Global config location
 CONFIG_PATH="/home/liu/.config/zsh"
 
