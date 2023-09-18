@@ -57,7 +57,7 @@ bindsym $mod+slash exec "thunar; nautilus"
 set $power_mode "exit: [l]ock, [e]xit i3, [r]eboot, [s]hutdown"
 bindsym $mod+x mode $power_mode
 mode $power_mode {
-  bindsym l exec "i3lock-fancy -gp"; mode "default"
+  bindsym l exec "$HOME/.local/bin/locker"; mode "default"
   bindsym e exec "i3-msg exit"
   bindsym r exec "systemctl reboot"
   bindsym s exec "systemctl poweroff"
@@ -65,6 +65,17 @@ mode $power_mode {
   bindsym Return mode "default"
   bindsym $mod+x mode "default"
   bindsym XF86PowerOff mode "systemctl poweroff"
+}
+
+set $player_mode "media Player: [Lbrkt] 󰒮, [Rbrkt] 󰒭 [bckslash] /"
+bindsym $mod+Shift+p mode $player_mode
+mode $player_mode {
+  bindsym bracketleft exec "player-mpris-tail.py previous"; mode "default"
+  bindsym bracketright exec "player-mpris-tail.py next"; mode "default"
+  bindsym backslash exec "player-mpris-tail.py play-pause"; mode "default"
+  bindsym Escape mode "default"
+  bindsym Return mode "default"
+  bindsym $mod+Shift_p mode "default"
 }
 
 # text entry dialog to make input method happen
@@ -95,7 +106,7 @@ exec --no-startup-id keepassxc
 exec --no-startup-id flameshot
 
 # wallpaper
-exec --no-startup-id nitrogen --restore
+exec_always --no-startup-id nitrogen --restore
 
 # notification daemon
 exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
@@ -107,7 +118,7 @@ exec_always --no-startup-id $HOME/.config/screenlayout/default.sh
 exec --no-startup-id fcitx -d
 
 # clipboard manager
-exec --no-startup-id "sleep 3; copyq"
+exec --no-startup-id "sleep 3 && copyq"
 
 # media player daemon
 exec --no-startup-id "playerctld daemon"

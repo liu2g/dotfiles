@@ -18,9 +18,10 @@ else
 
   for m in $screens; do
     if [[ $primary == $m ]]; then
+        [[ $hostname != star-platinum ]] && MONITOR=$m polybar top &
         MONITOR=$m polybar bottom &
     else
-        MONITOR=$m polybar top &
+        [[ $hostname == star-platinum ]] && MONITOR=$m polybar top &
         MONITOR=$m polybar bottom &
     fi
   done

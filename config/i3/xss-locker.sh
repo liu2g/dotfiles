@@ -21,7 +21,7 @@ pre_lock() {
 
 # Run after the locker exits
 post_lock() {
-    i3lock-fancy -gp
+    $HOME/.local/bin/locker
 }
 
 ###############################################################################

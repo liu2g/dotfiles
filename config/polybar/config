@@ -65,8 +65,8 @@ font-3 = Noto Sans Mono:pixelsize=10;1;antialias=false
 ;modules-left = i3
 label-active-font = 2
 ;modules-left = dunst
-modules-center = xwindow
-modules-right = updates-pacman-aurhelper wired wifi battery temperature-desktop temperature-laptop cpu memory gpu 
+;modules-center = xwindow
+modules-right = updates wired wifi battery temperature-desktop temperature-laptop cpu memory gpu 
 
 tray-position = right
 tray-padding = 4
@@ -342,7 +342,7 @@ click-right = pavucontrol
 
 [module/battery]
 type = internal/battery
-full-at = 100
+full-at = 98
 time-format = %H:%M
 
 battery = BATT
@@ -447,9 +447,8 @@ ramp-4 = 
 type = custom/script
 exec = ~/.config/polybar/scripts/player-mpris-tail.py -f ' {artist} - {title}'
 tail = true
-click-left = ~/.config/polybar/scripts/player-mpris-tail.py previous &
+click-left = ~/.config/polybar/scripts/player-mpris-tail.py play-pause &
 click-right = ~/.config/polybar/scripts/player-mpris-tail.py next &
-click-middle = ~/.config/polybar/scripts/player-mpris-tail.py play-pause &
 
 [module/backlight]
 type = internal/backlight
@@ -478,9 +477,9 @@ format-background = ${colors.alt-background}
 format-foreground = ${colors.alt-foreground}
 label = %output:25%
 
-[module/updates-pacman-aurhelper]
+[module/updates]
 type = custom/script
-exec = ~/.config/polybar/scripts/updates-pacman-aurhelper.sh
+exec = ~/.config/polybar/scripts/updates.sh
 interval = 600
 
 [module/gpu]
