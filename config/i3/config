@@ -136,7 +136,7 @@ exec --no-startup-id blueberry-tray
 exec --no-startup-id usbguard-applet-qt
 
 # usb storage manager
-exec --no-startup-id udiskie --smart-tray
+exec --no-startup-id udiskie --smart-tray --no-notify
 
 # signal client
 exec --no-startup-id signal-desktop --start-in-tray
@@ -308,6 +308,7 @@ for_window [all] title_window_icon on
 for_window [all] title_window_icon padding 10px
 
 for_window [class="^Pavucontrol"] floating enable
+for_window [class="^Blueman-manager"] floating enable
 
 for_window [class="^KeePassXC"] floating enable
 

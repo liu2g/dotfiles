@@ -7,21 +7,20 @@
 ## CONFIGURATION ##############################################################
 
 # Command to start the locker (should not fork)
-locker="xlock +resetsaver"
+locker="$HOME/.local/bin/locker"
 
 # Delay in seconds. Note that by default systemd-logind allows a maximum sleep
 # delay of 5 seconds.
-sleep_delay=1
+sleep_delay=10
 
 # Run before starting the locker
 pre_lock() {
-    #mpc pause
     return
 }
 
 # Run after the locker exits
 post_lock() {
-    $HOME/.local/bin/locker
+    return
 }
 
 ###############################################################################

@@ -19,6 +19,7 @@ if (! command -v code &> /dev/null); then alias code='flatpak run com.visualstud
 if (! command -v sioyek &> /dev/null); then alias sioyek='flatpak run com.github.ahrm.sioyek'; fi
 if (command -v matlab &> /dev/null); then alias matlabsh='matlab -nodesktop'; fi
 if (command -v vivado &> /dev/null); then alias vivadosh='. $(realpath $(which vivado)) -mode tcl'; fi
+fork() { (setsid "$@" &); }
 
 condaex () {
 	# Extract installed pip packages

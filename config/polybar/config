@@ -302,7 +302,7 @@ format-volume = <ramp-volume>  <label-volume>
 ; Available tokens:
 ;   %percentage% (default)
 ;   %decibels%
-label-muted = 󰝟 MUTE
+label-muted = 󰝟   MUTE
 label-muted-foreground = #666
 
 ; Only applies if <ramp-volume> is used
@@ -344,6 +344,7 @@ click-right = pavucontrol
 type = internal/battery
 full-at = 98
 time-format = %H:%M
+poll-interval = 10
 
 battery = BATT
 adapter = ACAD
@@ -499,6 +500,7 @@ interval = 1
 type = custom/script
 exec = ~/.config/polybar/scripts/dunst.sh
 click-left = dunstctl set-paused toggle
+click-right = dunstctl history-pop
 interval = 0.5
 
 ; vim:ft=dosini
