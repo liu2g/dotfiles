@@ -157,6 +157,9 @@ exec --no-startup-id mullvad-vpn
 # Temporary fix: nvidia flicker
 exec --no-startup-id nvidia-settings -a "[gpu:0]/GPUPowerMizerMode=1"
 
+# KVM
+exec --no-startup-id barrier
+
 
 ### --- Window config --- ###
 # default layout
