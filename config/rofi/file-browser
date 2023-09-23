@@ -1,7 +1,3 @@
-dir "/home/liu/Zufiles"
-exclude "/home/liu/Zufiles/Notes/"
-exclude "/home/liu/Zufiles/Kanban"
-exclude "/home/liu/Zufiles/Zotero"
-exclude "/home/liu/Zufiles/Taskwarrior"
-exclude "/home/liu/Zufiles/temps"
-depth 0
+dir "/home/liu/Projects"
+depth 4
+exclude __pycache__

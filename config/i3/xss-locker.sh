@@ -11,7 +11,7 @@ locker="$HOME/.local/bin/locker"
 
 # Delay in seconds. Note that by default systemd-logind allows a maximum sleep
 # delay of 5 seconds.
-sleep_delay=10
+sleep_delay=5
 
 # Run before starting the locker
 pre_lock() {
