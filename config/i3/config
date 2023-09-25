@@ -34,6 +34,7 @@ bindsym $mod+p exec keepassxc
 
 # flameshot
 bindsym $mod+Shift+s exec flameshot gui
+bindsym Print exec flameshot gui
 
 # firefox
 bindsym $mod+w exec firefox
