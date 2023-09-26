@@ -330,7 +330,7 @@ for_window [title="^popup-calendar"] floating enable, move position mouse
 
 for_window [class="^Protonvpn"] floating enable
 
-for_window [instance="system-monitoring-center"] floating enable
+for_window [title="System Monitoring Center"] floating enable
 
 for_window [instance="qq.exe"] floating enable
 
