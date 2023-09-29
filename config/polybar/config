@@ -267,7 +267,7 @@ interface = enp7s0
 interval = 3.0
 
 format-connected-prefix = "󰲝  "
-label-connected = %local_ip% %downspeed:8%
+label-connected = %local_ip%   %upspeed:8%   %downspeed:8%
 
 [module/date]
 type = internal/date
@@ -414,13 +414,6 @@ type = internal/counter
 format = <counter>
 interval = 0.1
 
-[module/temperature-desktop]
-type = internal/temperature
-thermal-zone = 1
-hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input
-base-temperature = 20
-warn-temperature = 80
-
 [module/temperature-laptop]
 type = internal/temperature
 thermal-zone = 1
@@ -440,6 +433,10 @@ ramp-1 = 
 ramp-2 = 
 ramp-3 = 
 ramp-4 = 
+
+[module/temperature-desktop]
+inherit = module/temperature-laptop
+hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input
 
 [module/player-mpris-tail]
 type = custom/script
