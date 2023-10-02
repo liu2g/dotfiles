@@ -30,11 +30,11 @@ bindsym XF86Calculator exec qalculate-gtk
 bindsym $mod+Return exec kitty
 
 # keepassxc
-bindsym $mod+p exec keepassxc
+bindsym $mod+p exec "keepassxc || org.keepassxc.KeePassXC"
 
 # flameshot
-bindsym $mod+Shift+s exec flameshot gui
-bindsym Print exec flameshot gui
+bindsym $mod+Shift+s exec "flameshot gui || org.flameshot.Flameshot gui"
+bindsym Print exec "flameshot gui || org.flameshot.Flameshot gui"
 
 # firefox
 bindsym $mod+w exec firefox
@@ -49,10 +49,13 @@ bindsym $mod+grave exec "rofi -modi file-browser-extended,window,drun \
 bindsym $mod+a exec pavucontrol
 
 # system monitoring center
-bindsym $mod+BackSpace exec system-monitoring-center
+bindsym $mod+BackSpace exec "system-monitoring-center || io.github.hakandundar34coding.system-monitoring-center"
 
 # file manager
-bindsym $mod+slash exec "thunar; nautilus"
+bindsym $mod+slash exec "thunar || nautilus"
+
+# note taking program
+bindsym $mod+n exec "obsidian || md.obsidian.Obsidian"
 
 # Power options
 set $power_mode "exit: [l]ock, [e]xit i3, [r]eboot, [s]hutdown"
@@ -101,10 +104,10 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id blueman-applet
 
 # password manager
-exec --no-startup-id keepassxc
+exec --no-startup-id "keepassxc || org.keepassxc.KeePassXC"
 
 # flameshot
-exec --no-startup-id flameshot
+exec --no-startup-id "flameshot || org.flameshot.Flameshot"
 
 # wallpaper
 exec_always --no-startup-id nitrogen --restore
@@ -119,7 +122,7 @@ exec_always --no-startup-id $HOME/.config/screenlayout/default.sh
 exec --no-startup-id fcitx -d
 
 # clipboard manager
-exec --no-startup-id "sleep 3 && copyq"
+exec --no-startup-id "sleep 3 && copyq || com.github.hluk.copyq"
 
 # media player daemon
 exec --no-startup-id "playerctld daemon"
@@ -146,7 +149,7 @@ exec --no-startup-id signal-desktop --start-in-tray
 # exec --no-startup-id electron-mail
 # exec --no-startup-id "sleep 3; protonmail-bridge --no-window"
 # exec --no-startup-id birdtray
-exec --no-startup-id ferdium
+exec --no-startup-id "ferdium || org.ferdium.Ferdium"
 
 
 # discord client
