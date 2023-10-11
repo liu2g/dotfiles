@@ -58,13 +58,14 @@ bindsym $mod+slash exec "thunar || nautilus"
 bindsym $mod+n exec "obsidian || md.obsidian.Obsidian"
 
 # Power options
-set $power_mode "exit: [l]ock, [e]xit i3, [r]eboot, [s]hutdown"
+set $power_mode "exit: [l]ock, [e]xit i3, [s]uspend, [p]oweroff, [r]eboot"
 bindsym $mod+x mode $power_mode
 mode $power_mode {
   bindsym l exec "$HOME/.local/bin/locker"; mode "default"
   bindsym e exec "i3-msg exit"
+  bindsym s exec "systemctl suspend"
+  bindsym p exec "systemctl poweroff"
   bindsym r exec "systemctl reboot"
-  bindsym s exec "systemctl poweroff"
   bindsym Escape mode "default"
   bindsym Return mode "default"
   bindsym $mod+x mode "default"
