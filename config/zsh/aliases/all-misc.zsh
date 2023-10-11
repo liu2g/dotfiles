@@ -30,6 +30,18 @@ condaex () {
 	echo "$pip_packages"
 }
 
+submit () {
+    # Initialize submit dir
+    mkdir -p submitd
+    for f in "$@"; do
+        ln -sr "$f" submitd/
+    done
+}
+
+zipd () {
+    zip -r $1 $1
+}
+
 # Language related tools
 alias tozh='trans :zh'
 alias toen='trans :en'
@@ -54,4 +66,3 @@ function chpwd() {ls}
 function set_terminal_title() {
   echo -en "\e]2;$@\a"
 }
-
