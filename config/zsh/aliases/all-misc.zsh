@@ -30,13 +30,16 @@ condaex () {
 	echo "$pip_packages"
 }
 
-submit () {
-    # Initialize submit dir
-    mkdir -p submitd
-    for f in "$@"; do
-        ln -sr "$f" submitd/
-    done
-}
+# submit () {
+    # # Initialize submit dir
+    # mkdir -p submitd
+    # for f in "$@"; do
+        # ln -sr "$f" submitd/
+    # done
+    # zipfile="liu_$(basename "$PWD")_submitd.zip"
+    # zip -r "$zipfile" submitd/
+    # echo "==> ARCHIVED $(zipinfo -1 "$zipfile" | tail -n +2 | wc -l) file(s)"
+# }
 
 zipd () {
     zip -r $1 $1
