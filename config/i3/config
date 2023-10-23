@@ -340,3 +340,5 @@ for_window [title="System Monitoring Center"] floating enable
 for_window [instance="qq.exe"] floating enable
 
 for_window [class="Proton Mail Bridge"] floating enable, move position mouse
+
+for_window [title="Quick Format Citation"] floating enable, move position mouse
