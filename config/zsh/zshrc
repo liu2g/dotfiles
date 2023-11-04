@@ -79,7 +79,7 @@ for file in $CONFIG_PATH/aliases/*(.); source $file
 
 # Load plugins
 # complete -o nospace -C /usr/local/bin/bit bit
-if [[ -f /usr/share/autojump/autojump.zsh ]]; then source /usr/share/autojump/autojump.zsh; fi
+eval "$(zoxide init zsh)"
 source "$CONFIG_PATH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$CONFIG_PATH/plugins/zsh-async/async.zsh"
 source "$CONFIG_PATH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"

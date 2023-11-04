@@ -49,7 +49,7 @@ bindsym $mod+grave exec "rofi -modi file-browser-extended,window,drun \
 bindsym $mod+a exec pavucontrol
 
 # system monitoring center
-bindsym $mod+BackSpace exec "system-monitoring-center || io.github.hakandundar34coding.system-monitoring-center"
+bindsym $mod+BackSpace exec "resources || net.nokyan.Resources"
 
 # file manager
 bindsym $mod+slash exec "thunar || nautilus"
@@ -336,6 +336,7 @@ for_window [title="^popup-calendar"] floating enable, move position mouse
 for_window [class="^Protonvpn"] floating enable
 
 for_window [title="System Monitoring Center"] floating enable
+for_window [class="^resources"] floating enable
 
 for_window [instance="qq.exe"] floating enable
 

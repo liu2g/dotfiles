@@ -500,7 +500,7 @@ interval = 0.5
 [module/hostname]
 type = custom/script
 exec =  echo "    $(hostnamectl hostname)"
-click-left = system-monitoring-center || io.github.hakandundar34coding.system-monitoring-center
+click-left = resources || net.nokyan.Resources
 interval = 100
 
 ; vim:ft=dosini
