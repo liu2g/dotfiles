@@ -500,7 +500,7 @@ interval = 0.5
 [module/hostname]
 type = custom/script
 exec =  echo "    $(hostnamectl hostname)"
-click-left = resources || net.nokyan.Resources
+click-left = missioncenter || io.missioncenter.MissionCenter
 interval = 100
 
 ; vim:ft=dosini

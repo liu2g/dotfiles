@@ -49,7 +49,7 @@ bindsym $mod+grave exec "rofi -modi file-browser-extended,window,drun \
 bindsym $mod+a exec pavucontrol
 
 # system monitoring center
-bindsym $mod+BackSpace exec "resources || net.nokyan.Resources"
+bindsym $mod+BackSpace exec "missioncenter || io.missioncenter.MissionCenter"
 
 # file manager
 bindsym $mod+slash exec "thunar || nautilus"
@@ -337,6 +337,7 @@ for_window [class="^Protonvpn"] floating enable
 
 for_window [title="System Monitoring Center"] floating enable
 for_window [class="^resources"] floating enable
+for_window [class="^missioncenter"] floating enable
 
 for_window [instance="qq.exe"] floating enable
 
