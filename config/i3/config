@@ -57,6 +57,9 @@ bindsym $mod+slash exec "thunar || nautilus"
 # note taking program
 bindsym $mod+n exec "obsidian || md.obsidian.Obsidian"
 
+# show keybind
+bindsym $mod+Shift+slash exec i3help
+
 # Power options
 set $power_mode "exit: [l]ock, [e]xit i3, [s]uspend, [p]oweroff, [r]eboot"
 bindsym $mod+x mode $power_mode
@@ -172,6 +175,7 @@ workspace_layout tabbed
 
 # kill focused window
 bindsym $mod+q kill
+bindsym $mod+Shift+q focus parent,kill
 bindsym --release button2 kill
 
 # change focus

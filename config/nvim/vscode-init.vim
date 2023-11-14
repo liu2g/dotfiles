@@ -1,5 +1,6 @@
 let mapleader = ","
 set timeoutlen=2000
+set ignorecase smartcase
 
 set clipboard=unnamedplus
 set clipboard+=unnamed
