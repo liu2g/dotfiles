@@ -345,6 +345,7 @@ for_window [class="^Protonvpn"] floating enable
 for_window [title="System Monitoring Center"] floating enable
 for_window [class="^resources"] floating enable
 for_window [class="^missioncenter"] floating enable
+for_window [class="^Xfce4-taskmanager"] floating enable
 
 for_window [instance="qq.exe"] floating enable
 

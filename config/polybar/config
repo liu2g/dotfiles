@@ -500,7 +500,7 @@ interval = 0.5
 [module/hostname]
 type = custom/script
 exec =  echo "    $(hostnamectl hostname)"
-click-left = GTK_THEME=Adwaita-dark missioncenter || io.missioncenter.MissionCenter
+click-left = xfce4-taskmanager
 interval = 100
 
 ; vim:ft=dosini
