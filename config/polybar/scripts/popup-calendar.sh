@@ -17,8 +17,8 @@ case "$1" in
             : $(( pos_x = X - (WIDTH / 2) ))
         fi
 
-        Xdialog --title "popup-calendar" --calendar "" 23 50
-        # xterm -geometry 38x18+$pos_x+$pos_y -title popup-calendar -e dialog --no-shadow --no-lines --no-cancel --week-start 1 --clear --calendar "" 1 40
+        # Xdialog --title "popup-calendar" --calendar "" 23 50
+        xterm -geometry 38x18+$pos_x+$pos_y -title popup-calendar -e dialog --no-shadow --no-lines --no-cancel --week-start 1 --clear --calendar "" 1 40
 
         ;;
     *)
