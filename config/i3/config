@@ -123,7 +123,7 @@ exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
 exec_always --no-startup-id $HOME/.config/screenlayout/default.sh
 
 # input method manager
-exec --no-startup-id fcitx -d
+exec --no-startup-id fcitx5 -d
 
 # clipboard manager
 exec --no-startup-id "sleep 3 && copyq || com.github.hluk.copyq"
@@ -345,7 +345,9 @@ for_window [class="^Protonvpn"] floating enable
 for_window [title="System Monitoring Center"] floating enable
 for_window [class="^resources"] floating enable
 for_window [class="^missioncenter"] floating enable
+for_window [class="^pix2tex_gui"] floating enable
 for_window [class="^Xfce4-taskmanager"] floating enable
+for_window [title="^Enter text to copy into selection"] floating enable
 
 for_window [instance="qq.exe"] floating enable
 
