@@ -35,6 +35,7 @@ bindkey -v
 setopt appendhistory
 bindkey '^z' push-line-or-edit
 bindkey '^R' history-incremental-search-backward
+bindkey '^F' history-incremental-search-forward
 
 #### START OF CONDA INIT
 # !! Contents within this block are managed by 'conda init' !!
