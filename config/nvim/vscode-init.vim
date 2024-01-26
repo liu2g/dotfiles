@@ -1,3 +1,13 @@
+" ----- Imported Plugins ----- "
+call plug#begin('$HOME/.local/share/nvim/plugged')
+
+Plug 'konfekt/vim-sentence-chopper'
+Plug 'svermeulen/vim-cutlass'
+
+call plug#end()
+
+"let g:latexindent = 0
+
 let mapleader = ","
 set timeoutlen=2000
 set ignorecase smartcase
@@ -9,21 +19,14 @@ set clipboard+=unnamed
 set undodir=~/.vim/undo-dir
 set undofile
 
-" commenting out the visual line navigation out as it fails navigating notes with embeds
-"" Have j and k navigate visual lines rather than logical ones, normal mode
-noremap j gj
-noremap k gk
-noremap gj j
-noremap gk k
-noremap 0 g0
-noremap $ g$
-noremap A g$a
-
-
-"" use logical line navigation in visual mode
-vnoremap j gj
-vnoremap k gk
-vnoremap gj j
-vnoremap gk k
+" Workaround for gk/gj
+nnoremap k :<C-u>call VSCodeCall('cursorMove', { 'to': 'up', 'by': 'wrappedLine', 'value': v:count ? v:count : 1 })<CR>
+nnoremap j :<C-u>call VSCodeCall('cursorMove', { 'to': 'down', 'by': 'wrappedLine', 'value': v:count ? v:count : 1 })<CR>
 
 noremap <silent><esc> <esc>:noh<CR><esc>
+
+nnoremap m d
+xnoremap m d
+
+nnoremap mm dd
+nnoremap M D
