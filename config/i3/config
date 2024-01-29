@@ -92,6 +92,9 @@ mode $player_mode {
 # text entry dialog to make input method happen
 bindsym $mod+Tab exec zenity --entry --width=500 --title="Enter text to copy into selection" | xclip -selection clipboard
 
+# clipboard manager toggle
+bindsym $mod+c exec "copyq toggle"
+
 ### --- Autostarts --- ###
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
