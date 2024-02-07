@@ -2,7 +2,7 @@
 call plug#begin('$HOME/.local/share/nvim/plugged')
 
 Plug 'konfekt/vim-sentence-chopper'
-Plug 'svermeulen/vim-cutlass'
+" Plug 'svermeulen/vim-cutlass'
 
 call plug#end()
 
