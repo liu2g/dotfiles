@@ -355,6 +355,7 @@ for_window [class="^pix2tex_gui"] floating enable
 for_window [class="^Xfce4-taskmanager"] floating enable
 for_window [title="^Enter text to copy into selection"] floating enable
 for_window [class="^VirtualBox Machine"] floating enable
+for_window [class="^Kazam"] floating enable
 
 for_window [instance="qq.exe"] floating enable
 
