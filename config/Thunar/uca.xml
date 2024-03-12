@@ -3,9 +3,11 @@
 <action>
 	<icon>utilities-terminal</icon>
 	<name>Open Terminal Here</name>
+	<submenu></submenu>
 	<unique-id>1642817380386811-1</unique-id>
 	<command>kitty</command>
 	<description></description>
+	<range></range>
 	<patterns>*</patterns>
 	<startup-notify/>
 	<directories/>
@@ -13,9 +15,22 @@
 <action>
 	<icon>visual-studio-code</icon>
 	<name>Open VSCode Here</name>
+	<submenu></submenu>
 	<unique-id>1694650195035431-1</unique-id>
 	<command>code .</command>
 	<description></description>
+	<range></range>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>ebook-reader</icon>
+	<name>Lastbook</name>
+	<submenu></submenu>
+	<unique-id>1709165182973487-1</unique-id>
+	<command>$HOME/.local/bin/lastbook.sh</command>
+	<description></description>
+	<range>*</range>
 	<patterns>*</patterns>
 	<directories/>
 </action>

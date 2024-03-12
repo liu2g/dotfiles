@@ -357,6 +357,7 @@ for_window [title="^Enter text to copy into selection"] floating enable
 for_window [class="^VirtualBox Machine"] floating enable
 for_window [class="^Kazam"] floating enable
 for_window [class="^flameshot"] floating enable
+for_window [class="^mpv"] floating enable
 
 for_window [instance="qq.exe"] floating enable
 
