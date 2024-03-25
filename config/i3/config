@@ -40,12 +40,11 @@ bindsym $mod+Shift+s exec "flameshot gui || org.flameshot.Flameshot gui"
 bindsym Print exec "flameshot gui || org.flameshot.Flameshot gui"
 
 # firefox
-bindsym $mod+w exec "floorp || firefox"
-bindsym $mod+Shift+w exec "floorp -private-window || firefox -private-window"
+bindsym $mod+w exec "firefox"
+bindsym $mod+Shift+w exec "firefox -private-window"
 
 # rofi launcher
-bindsym $mod+grave exec "rofi -modi file-browser-extended,window,drun \
-                          -combi-modi drun,window,file-browser-extended \
+bindsym $mod+grave exec "rofi -modi drun,vscode-recent,window,file-browser-extended \
                           -show drun -no-lazy-grab -no-disable-history"
 
 # pulseaudio controller
