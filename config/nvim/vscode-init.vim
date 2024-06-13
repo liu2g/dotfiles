@@ -20,8 +20,8 @@ set undodir=~/.vim/undo-dir
 set undofile
 
 " Workaround for gk/gj
-nnoremap k :<C-u>call VSCodeCall('cursorMove', { 'to': 'up', 'by': 'wrappedLine', 'value': v:count ? v:count : 1 })<CR>
-nnoremap j :<C-u>call VSCodeCall('cursorMove', { 'to': 'down', 'by': 'wrappedLine', 'value': v:count ? v:count : 1 })<CR>
+nmap k gk
+nmap j gj
 
 noremap <silent><esc> <esc>:noh<CR><esc>
 

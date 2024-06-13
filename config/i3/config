@@ -44,7 +44,7 @@ bindsym $mod+w exec "firefox"
 bindsym $mod+Shift+w exec "firefox -private-window"
 
 # rofi launcher
-bindsym $mod+grave exec "rofi -modi drun,vscode-recent,window,file-browser-extended \
+bindsym $mod+grave exec "rofi -modi drun,vscode-recent,file-browser-extended,window \
                           -show drun -no-lazy-grab -no-disable-history"
 
 # pulseaudio controller
@@ -172,6 +172,9 @@ exec --no-startup-id nvidia-settings -a "[gpu:0]/GPUPowerMizerMode=1"
 
 # KVM
 exec --no-startup-id barrier
+
+# Setup trackpad
+exec --no-startup-id set-trackpad.sh
 
 
 ### --- Window config --- ###
