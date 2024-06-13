@@ -488,7 +488,7 @@ type = custom/script
 exec = ~/.config/polybar/scripts/mullvad.sh --status
 click-left = ~/.config/polybar/scripts/mullvad.sh --toggle
 click-middle = ~/.config/polybar/scripts/mullvad.sh --reconnect
-interval = 1
+interval = 2
 
 [module/dunst]
 type = custom/script

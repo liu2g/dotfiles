@@ -11,7 +11,6 @@ alias lsa='ls -a'
 alias nv='nvim'
 alias cd="pushd"
 alias dirs="dirs -v"
-alias movebook='rsync -auh ~/Downloads/* ~/SSD/Books_new --remove-source-files; find ~/Downloads -type d -empty -delete'
 alias logdeck="ssh deck@192.168.0.189 -p 296"
 alias ffmpeg="ffmpeg -hide_banner"
 alias ffprobe="ffprobe -hide_banner"
@@ -65,6 +64,12 @@ closeto() {
 
 lastbook() {
 	DIR=$(find $HOME/SSD/Books_new -name $1); [[ ! -z "$DIR" ]] && {date -r "$DIR" "+%F"; /bin/ls -t "$DIR" | head -n 1; thunar "file://$DIR"}
+}
+
+movebook() {
+    find $HOME/Downloads/ -depth -type d -regex '.* ' -exec sh -c 'mv -v "$1" "$(echo "$1" | sed "s/ *$//")"' -- {} \;
+    rsync -auh ~/Downloads/* ~/SSD/Books_new --remove-source-files
+    find ~/Downloads -type d -empty -delete
 }
 
 function chpwd() {ls}

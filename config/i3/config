@@ -328,6 +328,7 @@ for_window [all] title_window_icon on
 for_window [all] title_window_icon padding 10px
 
 for_window [class="^Pavucontrol"] floating enable
+for_window [class="^pavucontrol"] floating enable
 for_window [class="^Blueman-manager"] floating enable
 
 for_window [class="^KeePassXC"] floating enable
@@ -354,7 +355,7 @@ for_window [class="^pix2tex_gui"] floating enable
 for_window [class="^Xfce4-taskmanager"] floating enable
 for_window [title="^Enter text to copy into selection"] floating enable
 for_window [class="^VirtualBox Machine"] floating enable
-for_window [class="^Kazam"] floating enable
+for_window [class="^kazam"] floating enable
 for_window [class="^flameshot"] floating enable
 for_window [class="^mpv"] floating enable
 
