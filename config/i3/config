@@ -142,6 +142,9 @@ exec_always --no-startup-id picom -b
 # disable monitor timeout
 exec_always --no-startup-id disable_timeout_monitor.sh
 
+# conky
+exec_always conky
+
 # bluetooth manager
 exec --no-startup-id blueberry-tray
 

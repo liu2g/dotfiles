@@ -97,8 +97,7 @@ set undofile
 let g:airline_theme='murmur' 
 
 " Set editor theme
-colorscheme oceanic_material
-set background=dark
+colorscheme default
 
 " ----- Plugin Settings ----- "
 " Deoplete
@@ -159,11 +158,6 @@ noremap <Tab>t :tabnew<CR>
 let g:buffet_tab_icon = "\uf00a"
 let g:buffet_left_trunc_icon = "\uf0a8"
 let g:buffet_right_trunc_icon = "\uf0a9"
-function! g:BuffetSetCustomColors()
-  hi! BuffetCurrentBuffer ctermbg=235 ctermfg=193
-  hi! BuffetActiveBuffer ctermbg=235 ctermfg=193
-  hi! BuffetTab ctermbg=235 ctermfg=193
-endfunction
 
 " LanguageTool
 let g:languagetool_jar='$HOME/.local/bin/LanguageTool/languagetool-commandline.jar'
