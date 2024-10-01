@@ -5,15 +5,10 @@ function fish_prompt --description 'Write out the prompt'
     set -q fish_color_status
     or set -g fish_color_status red
 
-    if not set -q __fish_git_prompt_show_informative_status
-        set -g __fish_git_prompt_show_informative_status 1
-    end
-    if not set -q __fish_git_prompt_color_branch
-        set -g __fish_git_prompt_color_branch $fish_color_comment
-    end
-    if not set -q __fish_git_prompt_showupstream
-        set -g __fish_git_prompt_showupstream informative
-    end
+    set -g __fish_git_prompt_show_informative_status 1
+    set -g __fish_git_prompt_color_branch $fish_color_comment
+    set -g __fish_git_prompt_showupstream informative
+    set -g __fish_git_prompt_showdirtystate yes
 
     set -g fish_prompt_pwd_full_dirs 2
     set -g fish_prompt_pwd_dir_length 1
