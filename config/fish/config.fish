@@ -1,6 +1,17 @@
-# add function subdirs to fish_function_path
-set fish_function_path (path resolve $__fish_config_dir/functions/*/) $fish_function_path
-
 if status is-interactive
     # Commands to run in interactive sessions can go here
+    bind \cz push-line
+    if not type -q bat
+        alias bat="batcat"
+    end
+    alias ls="eza --group-directories-first --icons"
+    alias nv="nvim"
+    alias wdump="lynx -width 100000 -dump"
+    function chpwd --on-variable PWD --description 'handler of changing $PWD'
+        ls -G
+    end
+    function fish_greeting
+        fastfetch
+    end
+    zoxide init fish | source
 end
