@@ -12,5 +12,5 @@ ffcompress () {
     else
         outfile="$2"
     fi
-    ffmpeg -hide_banner -i "$1" -vcodec libx264 -crf 20 "${outfile}"
+    ffmpeg -hide_banner -i "$1" -vcodec libx264 -crf 20 ${@:2} "${outfile}"
 }
