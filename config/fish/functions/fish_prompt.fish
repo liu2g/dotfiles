@@ -26,6 +26,7 @@ function fish_prompt --description 'Write out the prompt'
         set color_cwd $fish_color_param --bold
         set suffix '$'
     end
+    set color_login $fish_color_user --bold
 
     # Write pipestatus
     # If the status was carried over (if no command is issued or if `set` leaves the status untouched), don't bold it.
@@ -39,5 +40,5 @@ function fish_prompt --description 'Write out the prompt'
     set -l statusb_color (set_color $bold_flag $fish_color_status)
     set -l prompt_status (__fish_print_pipestatus "[" "] " "|" "$status_color" "$statusb_color" $last_pipestatus)
 
-    echo -n -s "$prompt_status"(prompt_login)' ' (set_color $color_cwd) (prompt_pwd) $normal (fish_vcs_prompt) $normal " $suffix "
+    echo -n -s "$prompt_status"(set_color $color_login)(whoami) $normal ' ' (set_color $color_cwd) (prompt_pwd) $normal (fish_vcs_prompt) $normal " $suffix "
 end
