@@ -7,6 +7,7 @@ if status is-interactive
     alias ls="eza --group-directories-first --icons"
     alias nv="nvim"
     alias wdump="lynx -width 100000 -dump"
+    abbr --add trapint --position command trap '"jobs -p | xargs kill ; trap - INT"' INT ';' 
     function chpwd --on-variable PWD --description 'handler of changing $PWD'
         ls -G
     end
