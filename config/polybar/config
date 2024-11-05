@@ -107,7 +107,7 @@ overline-size = ${bar/top.underline-size}
 
 modules-left = i3
 modules-center = hostname
-modules-right = mullvad volume dunst xkeyboard popup-calendar
+modules-right = volume dunst xkeyboard popup-calendar
 
 wm-restack = ${bar/top.wm-restack}
 
