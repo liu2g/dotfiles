@@ -349,6 +349,7 @@ for_window [class="steamwebhelper"] floating enable
 for_window [class="steamwebhelper" title="^Steam$"] floating disable
 for_window [class="steam"] floating enable
 for_window [class="Matplotlib"] floating enable
+for_window [class="matplotlib"] floating enable
 for_window [class="steam" title="^Steam$"] floating disable
 
 for_window [title="^popup-calendar"] floating enable, move position mouse
