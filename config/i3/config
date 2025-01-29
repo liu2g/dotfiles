@@ -44,7 +44,7 @@ bindsym $mod+w exec "firefox"
 bindsym $mod+Shift+w exec "firefox -private-window"
 
 # rofi launcher
-bindsym $mod+grave exec "rofi -modi drun,vscode-recent,file-browser-extended,window \
+bindsym $mod+grave exec "rofi -modi drun,vscode-recent,window \
                           -show drun -no-lazy-grab -no-disable-history"
 
 # pulseaudio controller
@@ -161,8 +161,9 @@ exec --no-startup-id signal-desktop --start-in-tray
 # exec --no-startup-id electron-mail
 # exec --no-startup-id "sleep 3; protonmail-bridge --no-window"
 # exec --no-startup-id birdtray
-exec --no-startup-id "ferdium || org.ferdium.Ferdium"
-
+# exec --no-startup-id "ferdium || org.ferdium.Ferdium"
+# exec --no-startup-id "kdocker proton-mail"
+exec --no-startup-id "sleep 3; kdocker tangram"
 
 # discord client
 # exec --no-startup-id discord --start-minimized

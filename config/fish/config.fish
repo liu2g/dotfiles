@@ -1,5 +1,6 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
+    set -x EDITOR nvim
     bind \cz push-line
     if not type -q bat
         alias bat="batcat"
@@ -9,6 +10,7 @@ if status is-interactive
     alias wdump="lynx -width 100000 -dump"
     abbr --add mt --position command trap '"jobs -p | xargs kill ; trap - INT"' INT ';' 
     abbr -a !! --position anywhere --function last_history_item
+    abbr --add fwbp --position command 'find . -type f -name "*.webp"'
     function chpwd --on-variable PWD --description 'handler of changing $PWD'
         ls -G
     end

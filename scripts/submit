@@ -10,5 +10,7 @@ for f in "$@"; do
     ln -sr "$f" submitd/
 done
 zipfile="liu_$(basename "$PWD")_submit.zip"
-zip -r "$zipfile" submitd/ --junk-paths
+pushd submitd
+zip -r "../${zipfile}" .
+popd
 echo "==> ARCHIVED $(zipinfo -1 "$zipfile" | tail -n +2 | wc -l) file(s)"
