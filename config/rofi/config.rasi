@@ -13,7 +13,7 @@ configuration {
     fullscreen:				false;
     hide-scrollbar:			true;
     sidebar-mode:			false;
-    kb-mode-next: "Super_L+grave";
+    kb-mode-next: "Super_L";
 }
 
 @import "colors.rasi"

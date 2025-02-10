@@ -1,0 +1,359 @@
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
+
+include /etc/sway/config.d/*
+include ~/.config/sway/inputs
+include ~/.config/sway/outputs
+include ~/.config/sway/workspaces
+input type:keyboard xkb_numlock enabled
+
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+### --- Key binds --- ###
+# Main mod key
+set $mod Mod4
+
+# restart inplace (preserves your layout/session)
+bindsym $mod+Shift+r reload
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec brightnessctl -q s 2%+ # increase screen brightness
+bindsym XF86MonBrightnessDown exec brightnessctl -q s 2%- # decrease screen brightness
+
+# Media player controls
+# Use pactl to adjust volume in PulseAudio.
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2% 
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2% 
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle 
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle 
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym $mod+XF86AudioMute exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym $mod+XF86AudioRaiseVolume exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym $mod+XF86AudioLowerVolume exec playerctl previous
+bindsym XF86Calculator exec qalculate-gtk
+
+
+# start terminal
+bindsym $mod+Return exec kitty
+
+# keepassxc
+bindsym $mod+p exec "keepassxc || org.keepassxc.KeePassXC"
+
+# flameshot
+bindsym $mod+Shift+s exec "flameshot gui || org.flameshot.Flameshot gui"
+bindsym Print exec "flameshot gui || org.flameshot.Flameshot gui"
+
+# firefox
+bindsym $mod+w exec "firefox"
+bindsym $mod+Shift+w exec "firefox -private-window"
+
+# rofi launcher
+bindsym $mod+grave exec "rofi -modi drun,vscode-recent,window \
+                          -show drun -no-lazy-grab -no-disable-history"
+
+# pulseaudio controller
+bindsym $mod+a exec pavucontrol
+
+# file manager
+bindsym $mod+slash exec "thunar || nautilus"
+
+# sway notification center control
+bindsym $mod+n exec swaync-client -t -sw
+
+# Power options
+set $power_mode "exit: [l]ock, [e]xit, [s]uspend, [p]oweroff, [r]eboot"
+bindsym $mod+x mode $power_mode
+mode $power_mode {
+  bindsym l exec "$HOME/.local/bin/locker"
+  bindsym e exec "swaymsg exit"
+  bindsym s exec "systemctl suspend"
+  bindsym p exec "systemctl poweroff"
+  bindsym r exec "systemctl reboot"
+  bindsym Escape mode "default"
+  bindsym Return mode "default"
+  bindsym $mod+x mode "default"
+  bindsym XF86PowerOff mode "systemctl poweroff"
+}
+
+# clipboard manager toggle
+bindsym $mod+c exec "copyq toggle"
+
+### --- Autostarts --- ###
+# The combination of xss-lock, nm-applet and pactl is a popular choice, so
+# they are included here as an example. Modify as you see fit.
+
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+#exec xss-lock --transfer-sleep-lock -- $HOME/.config/i3/xss-locker.sh
+
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec nm-applet
+
+# bluetooth tray icon and GUI configurator
+#exec blueman-applet
+
+# password manager
+exec "keepassxc || org.keepassxc.KeePassXC"
+
+# flameshot
+exec "flameshot || org.flameshot.Flameshot"
+
+# wallpaper
+#exec_always nitrogen --restore
+
+# notification daemon
+exec swaync
+
+# input method manager
+#exec fcitx5 -d
+
+# clipboard manager
+exec "copyq --start-server"
+
+# bluetooth manager
+#exec blueberry-tray
+
+# usb storage manager
+exec udiskie --smart-tray --no-notify
+
+# signal client
+exec signal-desktop --start-in-tray
+
+# email client
+# exec electron-mail
+# exec "sleep 3; protonmail-bridge --no-window"
+# exec birdtray
+# exec "ferdium || org.ferdium.Ferdium"
+# exec "kdocker proton-mail"
+#exec "sleep 3; kdocker tangram"
+
+# discord client
+# exec discord --start-minimized
+
+# VPN client
+#exec mullvad-vpn
+
+# KVM
+#exec barrier
+
+### --- Window config --- ###
+# default layout
+workspace_layout tabbed
+
+# kill focused window
+bindsym $mod+q kill
+bindsym $mod+Shift+q focus parent,kill
+bindsym --release button2 kill
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move location
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# move workspace between screens
+bindsym $mod+Shift+m move workspace to output next
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
+
+# change orientation
+bindsym $mod+Shift+v split h
+bindsym $mod+v split v
+
+# resize windows
+set $resize_mode "resize window: <h> narrower, <j> taller, <k> shorter, \
+<l> wider, <Shift> for larger step"
+bindsym $mod+r mode $resize_mode
+set $tile_resize_step 1
+set $float_resize_step 50
+mode $resize_mode {
+        bindsym h resize shrink width $tile_resize_step px or $tile_resize_step ppt
+        bindsym j resize grow height $tile_resize_step px or $tile_resize_step ppt
+        bindsym k resize shrink height $tile_resize_step px or $tile_resize_step ppt
+        bindsym l resize grow width $tile_resize_step px or $tile_resize_step ppt
+
+        bindsym Shift+h resize shrink width $float_resize_step px or $float_resize_step ppt
+        bindsym Shift+j resize grow height $float_resize_step px or $float_resize_step ppt
+        bindsym Shift+k resize shrink height $float_resize_step px or $float_resize_step ppt
+        bindsym Shift+l resize grow width $float_resize_step px or $float_resize_step ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# enter fullscreen mode for the focused container
+bindsym $mod+m fullscreen toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+f floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+f focus mode_toggle
+
+# displace flating window
+set $move_step 20
+set $displace_mode "displace floating: hjkl to move"
+bindsym $mod+d focus floating; mode $displace_mode
+mode $displace_mode {
+    bindsym $mod+Tab focus right
+    bindsym h     move left $move_step px
+    bindsym j     move down $move_step px
+    bindsym k     move up $move_step px
+    bindsym l     move right $move_step px
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+### --- Workspace config --- ###
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+
+### --- Appearance --- ###
+# title
+title_align center
+font pango: Noto Sans Mono 10 
+
+# window border
+smart_borders on
+default_floating_border normal
+
+# Tokyo Night Color Scheme 
+set $bg-color "1a1b26"
+set $fg-color "a9b1d6"
+
+set $blue "7aa2f7"
+set $green "9ece6a"
+set $red "f7768e"
+set $yellow "e0af68"
+set $purple "bb9af7"
+
+set $dark-blue "34548a"
+set $dark-green "485e30"
+set $dark-red "8c4351"
+set $dark-yellow "8f5e15"
+set $dark-purple "5a4a78"
+
+client.focused           $dark-blue    $dark-blue    $fg-color  $yellow     $blue
+client.focused_inactive  $dark-purple  $dark-purple  $fg-color  $bg-color   $bg-color
+client.unfocused         $dark-blue    $bg-color     $fg-color  $bg-color   $bg-color
+client.urgent            $red          $red          $bg-color  $red        $red
+client.placeholder       $bg-color     $bg-color     $fg-color  $bg-color   $bg-color
+client.background        $fg-color
+
+#client.focused #81a2be #81a2be #1d1f21 #282a2e
+#client.focused_inactive #373b41 #373b41 #969896 #282a2e
+#client.unfocused #282a2e #282a2e #969896 #282a2e
+#client.urgent #373b41 #cc6666 #ffffff #cc6666
+
+### --- Bar --- ###
+bar swaybar_command waybar
+
+### --- Window rules --- ###
+#for_window [all] title_window_icon on
+#for_window [all] title_window_icon padding 10px
+
+for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
+for_window [app_id="engrampa"] floating enable
+for_window [title="^Picture-in-Picture"] floating enable
+for_window [app_id="^Blueman-manager"] floating enable
+for_window [app_id="^xdg-desktop-portal-lxqt"] floating enable
+
+
+for_window [app_id="org.keepassxc.KeePassXC"] floating enable
+
+for_window [app_id="com.github.hluk.copyq"] floating enable
+
+for_window [app_id="qalculate-gtk"] floating enable
+
+for_window [app_id="Steam"] floating enable
+for_window [app_id="Steam" title="^Steam$"] floating disable
+for_window [app_id="steamwebhelper"] floating enable
+for_window [app_id="steamwebhelper" title="^Steam$"] floating disable
+for_window [app_id="steam"] floating enable
+for_window [app_id="Matplotlib"] floating enable
+for_window [app_id="matplotlib"] floating enable
+for_window [app_id="steam" title="^Steam$"] floating disable
+
+for_window [title="^popup-calendar"] floating enable, move position mouse
+
+for_window [app_id="^Protonvpn"] floating enable
+
+for_window [app_id="org.gnome.SystemMonitor"] floating enable
+for_window [app_id="^pix2tex_gui"] floating enable
+for_window [title="^Enter text to copy into selection"] floating enable
+for_window [app_id="^VirtualBox Machine"] floating enable
+for_window [app_id="^kazam"] floating enable
+for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
+for_window [app_id="^mpv"] floating enable
+
+for_window [instance="qq.exe"] floating enable
+
+for_window [app_id="Proton Mail Bridge"] floating enable, move position mouse
+
+for_window [title="Quick Format Citation"] floating enable, move position mouse
+for_window [shell="xwayland"] title_format "%title <small>[XWayland]</small>"

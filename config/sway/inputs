@@ -1,0 +1,4 @@
+input 5426:140:Razer_Razer_DeathAdder_V2_Mini {
+    accel_profile "flat"
+    pointer_accel 0.2 # set mouse sensitivity (between -1 and 1)
+}
