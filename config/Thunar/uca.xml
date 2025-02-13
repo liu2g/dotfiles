@@ -25,10 +25,10 @@
 </action>
 <action>
 	<icon>ebook-reader</icon>
-	<name>Lastbook</name>
+	<name>Findbook</name>
 	<submenu></submenu>
 	<unique-id>1709165182973487-1</unique-id>
-	<command>$HOME/.local/bin/lastbook.sh</command>
+	<command>$HOME/.local/bin/findbook.sh</command>
 	<description></description>
 	<range>*</range>
 	<patterns>*</patterns>

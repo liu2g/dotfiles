@@ -7,6 +7,7 @@
 include /etc/sway/config.d/*
 include ~/.config/sway/inputs
 include ~/.config/sway/outputs
+include ~/.config/sway/backgrounds
 include ~/.config/sway/workspaces
 input type:keyboard xkb_numlock enabled
 
@@ -66,7 +67,7 @@ bindsym $mod+a exec pavucontrol
 bindsym $mod+slash exec "thunar || nautilus"
 
 # sway notification center control
-bindsym $mod+n exec swaync-client -t -sw
+bindsym $mod+Tab exec swaync-client -t -sw
 
 # Power options
 set $power_mode "exit: [l]ock, [e]xit, [s]uspend, [p]oweroff, [r]eboot"
@@ -106,9 +107,6 @@ exec "keepassxc || org.keepassxc.KeePassXC"
 
 # flameshot
 exec "flameshot || org.flameshot.Flameshot"
-
-# wallpaper
-#exec_always nitrogen --restore
 
 # notification daemon
 exec swaync
@@ -322,6 +320,8 @@ for_window [app_id="engrampa"] floating enable
 for_window [title="^Picture-in-Picture"] floating enable
 for_window [app_id="^Blueman-manager"] floating enable
 for_window [app_id="^xdg-desktop-portal-lxqt"] floating enable
+for_window [app_id="^nm-connection-editor"] floating enable
+for_window [app_id="^yad"] floating enable
 
 
 for_window [app_id="org.keepassxc.KeePassXC"] floating enable
