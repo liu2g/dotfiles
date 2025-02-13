@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# needs pacman-contrib package from extra repo
 if ! updates_arch=$(checkupdates 2> /dev/null | wc -l ); then
     updates_arch=0
 fi
