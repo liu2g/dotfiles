@@ -19,9 +19,15 @@ Usage:
         "movies/Dune (2021).mkv" (it is URL-encoded for you). Anything after
         "--" is passed to syncplay, e.g. -- --name liu --room friday.
 
+    watchparty.py browse
+        List every file the host's miniserve offers, one per line, as paths
+        ready to pass to join, e.g.
+        ./watchparty.py join "$(./watchparty.py browse | fzf)"
+
 Requirements:
     Python 3.9+ (checked at startup). serve needs miniserve and
-    syncplay-server on PATH; join needs syncplay.
+    syncplay-server on PATH; join needs syncplay; browse needs only the host's
+    miniserve to be running.
 
 Notes:
     SERVER_IP and the ports are constants below; edit them if the host's
@@ -43,13 +49,16 @@ import signal
 import subprocess
 import threading
 import time
-from urllib.parse import quote
+from html.parser import HTMLParser
+from urllib.parse import quote, unquote, urljoin
+from urllib.request import urlopen
 
 SERVER_IP = "192.168.8.224"
 MINISERVER_PORT = "8000"
 SYNCPLAY_PORT = "8999"
 MEDIA_PATH = os.path.expanduser("~/serve/media")
 STOP_TIMEOUT = 3
+BROWSE_TIMEOUT = 5
 
 miniserve_cmd = [
     "miniserve",
@@ -145,6 +154,42 @@ def join(filepath, extra_args):
     cmd = syncplay_client_cmd(filepath, extra_args)
     os.execvp(cmd[0], cmd)
 
+class ListingParser(HTMLParser):
+    """Collect file and directory links from a miniserve ?raw=true listing."""
+
+    def __init__(self):
+        super().__init__()
+        self.files = []
+        self.dirs = []
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if tag != "a" or "href" not in attrs:
+            return
+        if attrs.get("class") == "file":
+            self.files.append(attrs["href"])
+        elif attrs.get("class") == "directory":
+            self.dirs.append(attrs["href"])
+
+def browse():
+    base = f"http://{SERVER_IP}:{MINISERVER_PORT}/"
+    pending = [urljoin(base, "?raw=true")]
+    files = []
+    try:
+        while pending:
+            url = pending.pop()
+            with urlopen(url, timeout=BROWSE_TIMEOUT) as response:
+                parser = ListingParser()
+                parser.feed(response.read().decode("utf-8", errors="replace"))
+            files.extend(unquote(href).lstrip("/") for href in parser.files)
+            # miniserve's directory links already carry ?raw=true
+            pending.extend(urljoin(url, href) for href in parser.dirs)
+    except OSError as e:
+        sys.exit(f"watchparty: cannot browse {base}: {getattr(e, 'reason', e)}")
+    for path in sorted(files):
+        print(path)
+    return 0
+
 def main():
     argv = sys.argv[1:]
     extra_args = []
@@ -161,13 +206,16 @@ def main():
         usage="%(prog)s [-h] filepath [-- syncplay args...]",
     )
     join_parser.add_argument("filepath", help="path relative to the media root")
+    subparsers.add_parser("browse", help="list the files the host's miniserve offers")
     args = parser.parse_args(argv)
 
+    if extra_args and args.command != "join":
+        parser.error(f"{args.command} takes no extra arguments")
     try:
         if args.command == "serve":
-            if extra_args:
-                parser.error("serve takes no extra arguments")
             return serve()
+        if args.command == "browse":
+            return browse()
         join(args.filepath, extra_args)
     except FileNotFoundError as e:
         sys.exit(f"watchparty: {e.filename}: command not found")
